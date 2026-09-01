@@ -83,10 +83,6 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.32, ease }}
               className="mt-10 flex flex-col gap-3 sm:flex-row"
             >
-              <Button href={waLink()} variant="wa">
-                <WhatsAppGlyph className="h-4.5 w-4.5" />
-                Falar no WhatsApp
-              </Button>
               <Button to="/servicos" variant="ghost">
                 Ver nossos serviços
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
