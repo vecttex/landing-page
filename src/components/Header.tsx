@@ -1,0 +1,143 @@
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { NAV, waLink } from "../lib/site";
+import { Logo } from "./Logo";
+import { WhatsAppGlyph } from "./WhatsAppFab";
+
+export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
+          scrolled
+            ? "border-b border-line/70 bg-ink/80 backdrop-blur-xl"
+            : "border-b border-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-[84px] w-full max-w-[1200px] items-center justify-between px-5 sm:px-8">
+          <Logo />
+
+          <nav className="hidden items-center gap-1 lg:flex">
+            {NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `relative rounded-full px-4 py-2 text-[13.5px] font-medium transition-colors duration-300 ${
+                    isActive ? "text-fg" : "text-muted hover:text-fg"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 rounded-full border border-line bg-white/[0.04]"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative">{item.label}</span>
+                  </>
+                )}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2.5">
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden items-center gap-2 rounded-full bg-wa px-4.5 py-2.5 text-[13px] font-semibold text-[#04240f] transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5 sm:flex"
+              style={{ paddingLeft: 18, paddingRight: 18 }}
+            >
+              <WhatsAppGlyph className="h-4 w-4" />
+              WhatsApp
+            </a>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Abrir menu"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/[0.03] text-fg transition-colors hover:border-accent/60 lg:hidden"
+            >
+              {open ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[55] bg-ink/96 backdrop-blur-2xl lg:hidden"
+          >
+            <div className="grid-lines absolute inset-0 opacity-40" />
+            <div className="relative flex h-full flex-col justify-between px-6 pb-10 pt-[112px]">
+              <nav className="flex flex-col">
+                {NAV.map((item, i) => (
+                  <motion.div
+                    key={item.to}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.06 * i + 0.05, duration: 0.4 }}
+                  >
+                    <Link
+                      to={item.to}
+                      className="flex items-center justify-between border-b border-line/70 py-5"
+                    >
+                      <span className="font-display text-3xl font-semibold tracking-[-0.03em] text-fg">
+                        {item.label}
+                      </span>
+                      <span className="font-label text-[10px] text-muted">
+                        0{i + 1}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+              <motion.a
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                href={waLink()}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2.5 rounded-2xl bg-wa px-6 py-4 text-[15px] font-semibold text-[#04240f]"
+              >
+                <WhatsAppGlyph className="h-5 w-5" />
+                Falar no WhatsApp
+                <ArrowUpRight className="h-4 w-4" />
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
