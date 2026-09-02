@@ -19,7 +19,7 @@ export const CONTACT = {
   whatsappNumber: "5551981061315",
   whatsappDisplay: "+55 (51) 98106-1315",
   email: "contato@vecttex.com.br",
-  address: "Gravataí/RS",
+  address: "Gravataí - Rio Grande do Sul",
   coverage: "Atendimento on-line para todo o Brasil",
   hours: "· Segunda a sexta das 09:00 às 19:00\n· Sábado das 09:00 às 13:00",
 };
