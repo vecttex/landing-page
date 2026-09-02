@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, CheckCheck, Lock } from "lucide-react";
 import { LogoMark } from "./Logo";
-import { BRAND } from "../lib/site";
+import { BRAND } from "../content";
 
 /* ------------------------------------------------------------------ */
 /*  Browser window mockup with a miniature website rendered inside     */
@@ -162,7 +162,7 @@ const MESSAGES = [
   { from: "them", text: "Olá! Quero um site para a minha empresa 👋", time: "09:12" },
   { from: "us", text: "Oi! Que ótimo. Me conta um pouco sobre o seu negócio?", time: "09:12" },
   { from: "them", text: "Tenho um restaurante e preciso mostrar o cardápio", time: "09:14" },
-  { from: "us", text: "Perfeito. Monto a estrutura e te apresento o projeto pronto — você só paga depois de aprovar ✅", time: "09:15" },
+  { from: "us", text: "Perfeito. Monto a estrutura, escolho as seções e te apresento o projeto pronto ✅", time: "09:15" },
 ];
 
 export function ChatMockup({ className = "" }: { className?: string }) {

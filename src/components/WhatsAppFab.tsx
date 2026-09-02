@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { waLink } from "../lib/site";
+import { waLink } from "../content";
 
 function WhatsAppGlyph({ className = "h-6 w-6" }: { className?: string }) {
   return (

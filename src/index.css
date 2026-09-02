@@ -136,26 +136,6 @@ body {
   -webkit-backdrop-filter: blur(14px);
 }
 
-.card-sheen {
-  position: relative;
-  overflow: hidden;
-}
-.card-sheen::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(140deg, rgba(255, 176, 0, 0.55), rgba(255, 255, 255, 0.06) 32%, transparent 60%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  pointer-events: none;
-}
-.card-sheen:hover::before { opacity: 1; }
-
 .btn-glow {
   box-shadow: 0 10px 40px -12px rgba(255, 176, 0, 0.7);
 }

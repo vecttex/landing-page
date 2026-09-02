@@ -1,26 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Plus,
-  Minus,
-  ShieldCheck,
-  Wallet,
-  Sparkles,
-  Headphones,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Plus, Minus, ShieldCheck } from "lucide-react";
 import {
   BRAND,
-  SERVICES,
+  CONTACT,
+  PILLARS,
+  DELIVERABLES,
   PROJECT_TYPES,
   PROCESS,
   EXTRAS,
   FAQ,
   waLink,
-} from "../lib/site";
+} from "../content";
 import { Button, Eyebrow, Reveal, Section, SectionHeading, GlowOrb } from "./ui";
 import { LogoMark } from "./Logo";
 import { Icon } from "./Icon";
@@ -68,25 +60,20 @@ export function PageHero({
 
 /* ---------------------------------------------------------------- */
 
-const TRUST = [
-  { icon: Wallet, label: "Pagamento só após aprovação" },
-  { icon: Sparkles, label: "Alterações antes de fechar" },
-  { icon: Headphones, label: "Suporte direto no WhatsApp" },
-  { icon: ShieldCheck, label: "Projeto 100% personalizado" },
-];
-
+/* Versão curta dos três pilares. Cada um é desenvolvido por extenso em
+   uma página específica — aqui aparecem só como assinatura. */
 export function TrustStrip() {
   return (
     <div className="relative border-y border-line bg-ink-2/60">
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-2 gap-px px-5 sm:px-8 lg:grid-cols-4">
-        {TRUST.map((t, i) => (
-          <Reveal key={t.label} delay={i * 0.07}>
+      <div className="mx-auto grid w-full max-w-[1200px] gap-px px-5 sm:grid-cols-3 sm:px-8">
+        {PILLARS.map((p, i) => (
+          <Reveal key={p.label} delay={i * 0.07}>
             <div className="flex items-center gap-3 py-6 lg:py-7">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/25 bg-accent/10">
-                <t.icon className="h-4 w-4 text-accent" strokeWidth={1.8} />
+                <Icon name={p.icon} className="h-4 w-4 text-accent" strokeWidth={1.8} />
               </span>
               <span className="text-[12.5px] font-medium leading-tight text-fg/85 sm:text-[13.5px]">
-                {t.label}
+                {p.label}
               </span>
             </div>
           </Reveal>
@@ -98,42 +85,12 @@ export function TrustStrip() {
 
 /* ---------------------------------------------------------------- */
 
-const MARQUEE_WORDS = [
-  "Sites institucionais",
-  "Landing pages",
-  "Portfólios",
-  "Catálogos online",
-  "Sites de apresentação",
-  "Projetos personalizados",
-  "Aplicativos",
-  "Hospedagem",
-];
-
-export function Marquee() {
+export function DeliverablesGrid({ limit }: { limit?: number }) {
+  const list = limit ? DELIVERABLES.slice(0, limit) : DELIVERABLES;
   return (
-    <div className="relative overflow-hidden border-y border-line bg-ink py-5 mask-fade-x">
-      <div className="flex w-max animate-marquee items-center gap-10">
-        {[...MARQUEE_WORDS, ...MARQUEE_WORDS].map((w, i) => (
-          <span key={i} className="flex items-center gap-10">
-            <span className="font-display text-[15px] font-medium tracking-[-0.01em] text-fg/45 sm:text-[17px]">
-              {w}
-            </span>
-            <LogoMark flat className="h-3 w-auto opacity-80" />
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ---------------------------------------------------------------- */
-
-export function ServicesGrid({ limit }: { limit?: number }) {
-  const list = limit ? SERVICES.slice(0, limit) : SERVICES;
-  return (
-    <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
       {list.map((s, i) => (
-        <Reveal key={s.title} delay={(i % 4) * 0.06}>
+        <Reveal key={s.title} delay={(i % 3) * 0.06}>
           <div className="group relative h-full bg-ink-2 p-7 transition-colors duration-500 hover:bg-surface">
             <span className="absolute right-6 top-6 font-label text-[10px] text-muted/35">
               {String(i + 1).padStart(2, "0")}
@@ -160,25 +117,25 @@ export function ServicesGrid({ limit }: { limit?: number }) {
 
 /* ---------------------------------------------------------------- */
 
-export function TypesGrid() {
+export function TypesGrid({ limit }: { limit?: number }) {
+  const list = limit ? PROJECT_TYPES.slice(0, limit) : PROJECT_TYPES;
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {PROJECT_TYPES.map((t, i) => (
+      {list.map((t, i) => (
         <Reveal key={t.title} delay={(i % 3) * 0.08}>
-          <article className="card-sheen group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/50 transition-all duration-500 hover:-translate-y-1.5 hover:border-line-2">
+          <article className="group relative h-full overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-500 hover:-translate-y-1.5 hover:border-line-2">
             <div className="relative h-44 overflow-hidden">
               <img
                 src={t.image}
                 alt={t.title}
                 loading="lazy"
-                className="h-full w-full scale-105 object-cover opacity-55 grayscale transition-all duration-[900ms] group-hover:scale-100 group-hover:opacity-80 group-hover:grayscale-0"
+                className="h-full w-full scale-105 object-cover grayscale transition-all duration-[900ms] group-hover:scale-100 group-hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/45 to-transparent" />
               <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 font-label text-[9px] uppercase tracking-[0.18em] text-fg/80 backdrop-blur">
                 {t.tag}
               </span>
             </div>
-            <div className="relative -mt-8 p-6">
+            <div className="relative p-6">
               <h3 className="font-display text-[21px] font-semibold tracking-[-0.025em] text-fg">
                 {t.title}
               </h3>
@@ -202,6 +159,27 @@ export function TypesGrid() {
 }
 
 /* ---------------------------------------------------------------- */
+
+/* Resumo do método para a home: uma linha por etapa, sem repetir a
+   timeline completa que vive na página Serviços. */
+export function ProcessSummary() {
+  return (
+    <ol className="divide-y divide-line border-y border-line">
+      {PROCESS.map((p, i) => (
+        <Reveal key={p.step} delay={i * 0.06}>
+          <li className="group flex items-center gap-4 py-5 transition-colors sm:gap-6">
+            <span className="font-label text-[12px] font-medium text-accent/70 transition-colors group-hover:text-accent">
+              {p.step}
+            </span>
+            <h3 className="font-display text-[16px] font-medium tracking-[-0.015em] text-fg sm:text-[18px]">
+              {p.title}
+            </h3>
+          </li>
+        </Reveal>
+      ))}
+    </ol>
+  );
+}
 
 export function ProcessTimeline({ detailed = false }: { detailed?: boolean }) {
   return (
@@ -263,33 +241,15 @@ export function WhatsAppSupport() {
             <span className="text-gradient">com gente de verdade.</span>
           </h2>
           <p className="mt-6 max-w-lg text-[15.5px] leading-relaxed text-muted">
-            Nada de formulários sem resposta ou sistemas de ticket. Nossa equipe
-            fica disponível para responder dúvidas e prestar suporte diretamente
-            pelo WhatsApp — um atendimento próximo, rápido e fácil.
+            Nada de formulários sem resposta ou sistemas de ticket. Você fala
+            direto com quem está desenvolvendo o seu projeto — durante o
+            desenvolvimento e depois da entrega.
           </p>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {[
-              "Dúvidas respondidas durante todo o projeto",
-              "Acompanhamento do andamento em tempo real",
-              "Pedidos de alteração pelo mesmo canal",
-              "Suporte também depois da entrega",
-            ].map((t) => (
-              <div
-                key={t}
-                className="flex items-start gap-2.5 rounded-xl border border-line bg-white/[0.02] px-4 py-3.5"
-              >
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-wa" strokeWidth={2.4} />
-                <span className="text-[13px] leading-snug text-fg/80">{t}</span>
-              </div>
-            ))}
-          </div>
-
-          <Button href={waLink()} variant="wa" className="mt-9">
-            <WhatsAppGlyph className="h-4.5 w-4.5" />
-            Conversar agora
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Button>
+          <p className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-wa/25 bg-wa/[0.08] px-4 py-2.5 text-[13px] font-medium text-wa">
+            <WhatsAppGlyph className="h-4 w-4" />
+            {CONTACT.whatsappDisplay}
+          </p>
         </div>
 
         <div className="relative flex justify-center lg:justify-end">
@@ -320,22 +280,17 @@ export function ExtrasSection() {
             <br className="hidden sm:block" /> precisar de mais.
           </>
         }
-        lead="Serviços opcionais que você pode contratar junto com o projeto — sempre com as regras claras desde o início."
+        lead="Serviços opcionais que você pode contratar junto com o projeto — com o escopo combinado antes de começar."
       />
 
       <div className="mt-14 grid gap-5 lg:grid-cols-2">
         {EXTRAS.map((e, i) => (
           <Reveal key={e.title} delay={i * 0.1}>
-            <div className="card-sheen group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/45 p-8 transition-all duration-500 hover:-translate-y-1 sm:p-10">
+            <div className="group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/45 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 sm:p-10">
               <div className="stripe-accent pointer-events-none absolute -right-16 -top-16 h-40 w-40 rotate-12 opacity-40" />
-              <div className="flex items-start justify-between gap-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10">
-                  <Icon name={e.icon} className="h-5 w-5 text-accent" />
-                </span>
-                <span className="rounded-full border border-line bg-ink px-3 py-1.5 font-label text-[9.5px] uppercase tracking-[0.14em] text-muted">
-                  {e.price}
-                </span>
-              </div>
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10">
+                <Icon name={e.icon} className="h-5 w-5 text-accent" />
+              </span>
               <h3 className="mt-7 font-display text-[24px] font-semibold tracking-[-0.025em]">
                 {e.title}
               </h3>
@@ -378,14 +333,8 @@ export function FaqSection() {
                 <br /> desde o começo.
               </>
             }
-            lead="Transparência é parte do nosso trabalho. Se ficar qualquer dúvida, é só chamar no WhatsApp."
+            lead="Se ficar qualquer dúvida que não esteja aqui, é só chamar no WhatsApp pelo botão no canto da tela."
           />
-          <Reveal delay={0.18}>
-            <Button href={waLink()} variant="ghost" className="mt-8">
-              <WhatsAppGlyph className="h-4 w-4 text-wa" />
-              Perguntar no WhatsApp
-            </Button>
-          </Reveal>
         </div>
 
         <div className="divide-y divide-line border-y border-line">
@@ -454,7 +403,7 @@ export function CTASection() {
           <Reveal delay={0.14}>
             <p className="mx-auto mt-6 max-w-xl text-[15.5px] leading-relaxed text-muted">
               Uma conversa rápida no WhatsApp já é o suficiente para entendermos
-              o seu projeto. Sem compromisso e sem cobrança antes da aprovação.
+              o seu projeto — e é sem compromisso.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

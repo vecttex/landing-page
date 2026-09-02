@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BRAND } from "../lib/site";
+import { BRAND } from "../content";
 
 /**
  * Geometria oficial do símbolo Vecttex (Manual de Marca, cap. 03):

@@ -1,27 +1,17 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button, Reveal, Section, SectionHeading } from "../components/ui";
 import {
   CTASection,
+  DeliverablesGrid,
   ExtrasSection,
+  FaqSection,
   PageHero,
-  ServicesGrid,
+  ProcessTimeline,
   TypesGrid,
-  WhatsAppSupport,
 } from "../components/sections";
 import { PhoneSiteMockup, BrowserMockup } from "../components/Mockups";
-import { WhatsAppGlyph } from "../components/WhatsAppFab";
-import { waLink } from "../lib/site";
-
-const INCLUDED = [
-  "Design exclusivo, criado para o seu negócio",
-  "Versão responsiva para celular e tablet",
-  "Botões de contato direto pelo WhatsApp",
-  "Estrutura organizada e fácil de navegar",
-  "Textos e seções alinhados ao seu objetivo",
-  "Otimização de imagens e velocidade",
-  "Revisão e ajustes antes da entrega",
-  "Suporte da equipe pelo WhatsApp",
-];
+import { Icon } from "../components/Icon";
+import { PREPARE } from "../content";
 
 export default function Servicos() {
   return (
@@ -34,71 +24,28 @@ export default function Servicos() {
             <span className="text-gradient">existir bem na internet.</span>
           </>
         }
-        lead="Desenvolvemos sites profissionais para empresas e estabelecimentos — e também projetos personalizados quando a necessidade vai além de um site de apresentação."
+        lead="Sites e aplicativos alinhados ao seu negócio — e o método que usamos para chegar até lá, do primeiro contato à entrega."
       />
 
+      {/* ----------------------------- ENTREGAS ----------------------------- */}
       <Section>
         <SectionHeading
-          eyebrow="O que oferecemos"
-          title="Serviços inclusos no desenvolvimento"
-          lead="Cada projeto passa pelas mesmas etapas de cuidado, independentemente do tamanho."
+          eyebrow="O que entregamos"
+          title="Incluso em todo projeto"
+          lead="Independentemente do formato escolhido, estes itens fazem parte de qualquer site que desenvolvemos."
         />
         <div className="mt-14">
-          <ServicesGrid />
+          <DeliverablesGrid />
         </div>
       </Section>
 
-      {/* incluso */}
-      <Section className="border-t border-line bg-ink-2/40">
-        <div className="grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
-          <div>
-            <SectionHeading
-              eyebrow="Sempre incluso"
-              title={
-                <>
-                  O pacote base de
-                  <br /> <span className="text-gradient">todo projeto.</span>
-                </>
-              }
-              lead="Independentemente do formato escolhido, estes itens fazem parte de qualquer site que desenvolvemos."
-            />
-            <div className="mt-9 grid gap-3 sm:grid-cols-2">
-              {INCLUDED.map((item, i) => (
-                <Reveal key={item} delay={(i % 4) * 0.05}>
-                  <div className="flex items-start gap-3 rounded-xl border border-line bg-surface/40 px-4 py-3.5">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.4} />
-                    <span className="text-[13px] leading-snug text-fg/80">{item}</span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-            <Button href={waLink("Olá! Gostaria de saber mais sobre os serviços da Vecttex.")} variant="wa" className="mt-9">
-              <WhatsAppGlyph className="h-4.5 w-4.5" />
-              Pedir um orçamento
-            </Button>
-          </div>
-
-          <Reveal delay={0.14}>
-            <div className="relative flex items-center justify-center">
-              <div className="pointer-events-none absolute h-72 w-72 rounded-full bg-accent/12 blur-[100px]" />
-              <div className="relative w-full max-w-md rotate-[-1.5deg]">
-                <BrowserMockup url="suaempresa.com.br" />
-              </div>
-              <div className="absolute -bottom-10 -right-2 animate-float-slow sm:right-2">
-                <PhoneSiteMockup />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
-
-      {/* tipos */}
-      <Section id="tipos">
+      {/* ------------------------------ FORMATOS ---------------------------- */}
+      <Section id="tipos" className="border-t border-line bg-ink-2/40">
         <SectionHeading
           align="center"
-          eyebrow="Tipos de site"
+          eyebrow="Tipos de projeto"
           title="Formatos que desenvolvemos"
-          lead="Sites institucionais, sites de apresentação, landing pages, portfólios, catálogos online e outros tipos de projetos personalizados."
+          lead="Escolha o formato que combina com o seu objetivo — ou descreva o que você precisa e montamos a solução junto com você."
         />
         <div className="mt-14">
           <TypesGrid />
@@ -122,8 +69,79 @@ export default function Servicos() {
         </Reveal>
       </Section>
 
+      {/* ------------------------------ PROCESSO ---------------------------- */}
+      <Section id="processo">
+        <div className="grid items-center gap-14 lg:grid-cols-[1fr_0.85fr]">
+          <SectionHeading
+            eyebrow="Como funciona"
+            title={
+              <>
+                Cinco etapas,
+                <br /> <span className="text-gradient">do briefing à entrega.</span>
+              </>
+            }
+            lead="Um processo transparente, pensado para quem não entende de tecnologia e só quer um site profissional funcionando — sem dor de cabeça."
+          />
+          <Reveal delay={0.14}>
+            <div className="relative flex items-center justify-center">
+              <div className="pointer-events-none absolute h-72 w-72 rounded-full bg-accent/12 blur-[100px]" />
+              <div className="relative w-full max-w-md rotate-[-1.5deg]">
+                <BrowserMockup url="suaempresa.com.br" />
+              </div>
+              <div className="absolute -bottom-10 -right-2 animate-float-slow sm:right-2">
+                <PhoneSiteMockup />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-20">
+          <ProcessTimeline detailed />
+        </div>
+      </Section>
+
+      {/* ---------------------------- PREPARAÇÃO ---------------------------- */}
+      <Section className="border-t border-line bg-ink-2/40">
+        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeading
+              eyebrow="Antes de começar"
+              title={
+                <>
+                  O que ajuda a
+                  <br /> <span className="text-gradient">acelerar o projeto.</span>
+                </>
+              }
+              lead="Nada disso é obrigatório para começar a conversa — mas quanto mais informação, mais rápido chegamos ao resultado ideal."
+            />
+            <Button to="/contato" className="mt-8">
+              Começar meu projeto
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {PREPARE.map((p, i) => (
+              <Reveal key={p.title} delay={(i % 2) * 0.08}>
+                <div className="group h-full rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-line-2">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line-2/60 bg-white/[0.03] transition-colors group-hover:border-accent/50">
+                    <Icon name={p.icon} className="h-4.5 w-4.5 text-accent-2" strokeWidth={1.7} />
+                  </span>
+                  <h3 className="mt-5 font-display text-[17.5px] font-semibold tracking-[-0.02em]">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted">
+                    {p.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </Section>
+
       <ExtrasSection />
-      <WhatsAppSupport />
+      <FaqSection />
       <CTASection />
     </>
   );

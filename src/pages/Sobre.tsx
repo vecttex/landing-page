@@ -1,55 +1,14 @@
-import { Eye, Handshake, Compass, Gem, Users, Rocket } from "lucide-react";
-import { Button, Reveal, Section, SectionHeading, GlowOrb, Eyebrow } from "../components/ui";
-import { CTASection, PageHero, LinkCard } from "../components/sections";
+import { Reveal, Section, SectionHeading, GlowOrb, Eyebrow } from "../components/ui";
+import { CTASection, PageHero, LinkCard, WhatsAppSupport } from "../components/sections";
 import { BrowserMockup } from "../components/Mockups";
-import { WhatsAppGlyph } from "../components/WhatsAppFab";
-import { waLink } from "../lib/site";
-
-const VALUES = [
-  {
-    icon: Eye,
-    title: "Clareza antes de tudo",
-    desc: "Explicamos cada etapa em linguagem simples. Você nunca fica sem saber o que está acontecendo com o seu projeto.",
-  },
-  {
-    icon: Handshake,
-    title: "Confiança na prática",
-    desc: "Você vê o resultado, pede alterações e só paga depois de aprovar. A confiança começa pelo nosso lado.",
-  },
-  {
-    icon: Compass,
-    title: "Direcionado ao objetivo",
-    desc: "Antes de pensar em design, entendemos o que o seu negócio precisa comunicar e para quem.",
-  },
-  {
-    icon: Gem,
-    title: "Acabamento premium",
-    desc: "Tipografia, espaçamento, velocidade e detalhes. É isso que separa um site amador de um site profissional.",
-  },
-  {
-    icon: Users,
-    title: "Atendimento próximo",
-    desc: "Você conversa com a equipe que está desenvolvendo o seu projeto, direto pelo WhatsApp.",
-  },
-  {
-    icon: Rocket,
-    title: "Sem limitação de escopo",
-    desc: "Sites de apresentação são só o começo. Avaliamos qualquer projeto e desenvolvemos o que for necessário.",
-  },
-];
-
-const NUMBERS = [
-  { value: "5", label: "Etapas claras do início à entrega" },
-  { value: "6+", label: "Formatos de projeto disponíveis" },
-  { value: "100%", label: "Sites responsivos para celular" },
-  { value: "24h", label: "Canal de WhatsApp sempre aberto" },
-];
+import { Icon } from "../components/Icon";
+import { SOBRE_HERO, MANIFESTO, PRINCIPLES } from "../content";
 
 export default function Sobre() {
   return (
     <>
       <PageHero
-        eyebrow="Sobre nós"
+        eyebrow={SOBRE_HERO.eyebrow}
         title={
           <>
             Somos a equipe por trás dos{" "}
@@ -57,10 +16,10 @@ export default function Sobre() {
             negócio.
           </>
         }
-        lead="A Vecttex é uma empresa de tecnologia dedicada a negócios que querem uma presença digital à altura do que oferecem no mundo real — websites, aplicações mobile e soluções sob medida."
+        lead={SOBRE_HERO.lead}
       />
 
-      {/* manifesto */}
+      {/* ----------------------------- MANIFESTO ---------------------------- */}
       <Section>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
@@ -71,28 +30,10 @@ export default function Sobre() {
               <span className="text-gradient">É a primeira impressão.</span>
             </h2>
             <div className="mt-7 space-y-5 text-[15.5px] leading-relaxed text-muted">
-              <p>
-                Muitos negócios excelentes ainda são julgados por uma presença
-                digital que não corresponde à qualidade do que entregam. Nosso
-                trabalho é corrigir esse desencontro.
-              </p>
-              <p>
-                Criamos sites para apresentar negócios na internet, mas não
-                limitamos nossa atuação a isso. Se o seu projeto pede algo
-                diferente, avaliamos a necessidade e desenvolvemos uma solução
-                específica — cada projeto é personalizado de acordo com o
-                objetivo do cliente.
-              </p>
-              <p className="border-l-2 border-accent pl-5 text-fg/85">
-                “Você vê o projeto pronto, pede as alterações que quiser e só
-                paga depois de aprovar. É assim que a gente entende
-                profissionalismo.”
-              </p>
+              {MANIFESTO.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
             </div>
-            <Button href={waLink()} variant="wa" className="mt-9">
-              <WhatsAppGlyph className="h-4.5 w-4.5" />
-              Conversar com a equipe
-            </Button>
           </div>
 
           <Reveal delay={0.12}>
@@ -124,20 +65,20 @@ export default function Sobre() {
         </div>
       </Section>
 
-      {/* valores */}
+      {/* ----------------------------- PRINCÍPIOS --------------------------- */}
       <Section className="border-t border-line bg-ink-2/40">
         <SectionHeading
           align="center"
           eyebrow="Nossos princípios"
           title="O que orienta cada projeto"
-          lead="Seis compromissos que aplicamos em todos os trabalhos, independentemente do tamanho da empresa."
+          lead="Quatro compromissos que aplicamos em todos os trabalhos, independentemente do tamanho da empresa."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {VALUES.map((v, i) => (
-            <Reveal key={v.title} delay={(i % 3) * 0.08}>
-              <div className="card-sheen group h-full rounded-2xl border border-line bg-surface/45 p-7 transition-all duration-500 hover:-translate-y-1.5">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {PRINCIPLES.map((v, i) => (
+            <Reveal key={v.title} delay={(i % 4) * 0.08}>
+              <div className="group h-full rounded-2xl border border-line bg-surface/45 p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line-2/60 bg-gradient-to-br from-white/[0.07] to-transparent transition-all duration-500 group-hover:border-accent/50 group-hover:from-accent/20">
-                  <v.icon className="h-5 w-5 text-accent-2" strokeWidth={1.7} />
+                  <Icon name={v.icon} className="h-5 w-5 text-accent-2" strokeWidth={1.7} />
                 </span>
                 <h3 className="mt-6 font-display text-[19px] font-semibold tracking-[-0.02em]">
                   {v.title}
@@ -151,23 +92,9 @@ export default function Sobre() {
         </div>
       </Section>
 
-      {/* numbers */}
-      <Section>
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {NUMBERS.map((n, i) => (
-            <Reveal key={n.label} delay={i * 0.07}>
-              <div className="h-full bg-ink-2 px-7 py-10">
-                <p className="font-display text-[44px] font-semibold leading-none tracking-[-0.04em] text-gradient">
-                  {n.value}
-                </p>
-                <p className="mt-4 text-[13px] leading-snug text-muted">{n.label}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      <WhatsAppSupport />
 
-      {/* links */}
+      {/* ------------------------------- LINKS ------------------------------ */}
       <Section className="pt-0">
         <div className="grid gap-5 md:grid-cols-3">
           <Reveal>
@@ -175,15 +102,15 @@ export default function Sobre() {
               to="/servicos"
               label="Serviços"
               title="O que fazemos"
-              desc="Sites profissionais, design sob medida, integração com WhatsApp e projetos personalizados."
+              desc="O que está incluso em cada projeto e os formatos que desenvolvemos."
             />
           </Reveal>
           <Reveal delay={0.08}>
             <LinkCard
-              to="/processo"
+              to="/servicos#processo"
               label="Processo"
               title="Como trabalhamos"
-              desc="Cinco etapas claras, com alterações antes do pagamento e entrega após a sua aprovação."
+              desc="As cinco etapas do projeto, do primeiro contato até a entrega."
             />
           </Reveal>
           <Reveal delay={0.16}>

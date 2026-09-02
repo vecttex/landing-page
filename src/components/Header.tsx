@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { NAV, waLink } from "../lib/site";
+import { NAV } from "../content";
 import { Logo } from "./Logo";
-import { WhatsAppGlyph } from "./WhatsAppFab";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -67,16 +66,15 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2.5">
-            <a
-              href={waLink()}
-              target="_blank"
-              rel="noreferrer"
-              className="hidden items-center gap-2 rounded-full bg-wa px-4.5 py-2.5 text-[13px] font-semibold text-[#04240f] transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5 sm:flex"
-              style={{ paddingLeft: 18, paddingRight: 18 }}
+            {/* CTA neutro: o contato por WhatsApp fica a cargo do botão
+                flutuante, presente em todas as páginas. */}
+            <Link
+              to="/contato"
+              className="hidden items-center gap-2 rounded-full border border-line-2/70 bg-white/[0.02] px-5 py-2.5 text-[13px] font-semibold text-fg transition-all duration-300 hover:border-accent/60 hover:bg-accent/[0.07] hover:-translate-y-0.5 sm:flex"
             >
-              <WhatsAppGlyph className="h-4 w-4" />
-              WhatsApp
-            </a>
+              Pedir orçamento
+              <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
+            </Link>
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="Abrir menu"
@@ -121,19 +119,21 @@ export function Header() {
                   </motion.div>
                 ))}
               </nav>
-              <motion.a
+              {/* O botão flutuante de WhatsApp (z-70) continua visível por
+                  cima deste menu, então aqui o CTA aponta para o contato. */}
+              <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                href={waLink()}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2.5 rounded-2xl bg-wa px-6 py-4 text-[15px] font-semibold text-[#04240f]"
               >
-                <WhatsAppGlyph className="h-5 w-5" />
-                Falar no WhatsApp
-                <ArrowUpRight className="h-4 w-4" />
-              </motion.a>
+                <Link
+                  to="/contato"
+                  className="flex items-center justify-center gap-2.5 rounded-2xl bg-accent px-6 py-4 text-[15px] font-semibold text-[#111111]"
+                >
+                  Pedir orçamento
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

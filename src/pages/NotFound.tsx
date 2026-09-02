@@ -1,7 +1,5 @@
 import { ArrowLeft } from "lucide-react";
 import { Button, GlowOrb } from "../components/ui";
-import { waLink } from "../lib/site";
-import { WhatsAppGlyph } from "../components/WhatsAppFab";
 
 export default function NotFound() {
   return (
@@ -17,16 +15,15 @@ export default function NotFound() {
         </h1>
         <p className="mx-auto mt-6 max-w-md text-[15.5px] leading-relaxed text-muted">
           O endereço que você tentou acessar não existe. Volte para o início ou
-          fale com a nossa equipe pelo WhatsApp.
+          fale com a nossa equipe pelo botão do WhatsApp no canto da tela.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button to="/">
             <ArrowLeft className="h-4 w-4" />
             Voltar ao início
           </Button>
-          <Button href={waLink()} variant="ghost">
-            <WhatsAppGlyph className="h-4 w-4 text-wa" />
-            Falar no WhatsApp
+          <Button to="/contato" variant="ghost">
+            Ir para o contato
           </Button>
         </div>
       </div>

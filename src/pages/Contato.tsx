@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, Send, CheckCircle2, ChevronDown } from "lucide-react";
+import { Mail, MapPin, Globe, Clock, Send, CheckCircle2, ChevronDown } from "lucide-react";
 import { Reveal, Section, GlowOrb, Eyebrow } from "../components/ui";
 import { PageHero } from "../components/sections";
 import { WhatsAppGlyph } from "../components/WhatsAppFab";
-import { CONTACT, PROJECT_TYPES, waLink } from "../lib/site";
+import { CONTACT, PROJECT_TYPES, waLink } from "../content";
 
 const inputCls =
   "w-full rounded-xl border border-line bg-ink-2/80 px-4 py-3.5 text-[14px] text-fg placeholder:text-muted/60 outline-none transition-all duration-300 focus:border-accent/70 focus:bg-ink-2 focus:ring-2 focus:ring-accent/15";
@@ -215,7 +215,8 @@ export default function Contato() {
 
             {[
               { icon: Mail, label: "E-mail", value: CONTACT.email },
-              { icon: MapPin, label: "Atendimento", value: CONTACT.city },
+              { icon: MapPin, label: "Endereço", value: CONTACT.address },
+              { icon: Globe, label: "Atendimento", value: CONTACT.coverage },
               { icon: Clock, label: "Horários", value: CONTACT.hours },
             ].map((c, i) => (
               <Reveal key={c.label} delay={0.14 + i * 0.06}>
@@ -234,18 +235,6 @@ export default function Contato() {
                 </div>
               </Reveal>
             ))}
-
-            <Reveal delay={0.34}>
-              <div className="rounded-2xl border border-dashed border-line-2/70 bg-ink-2/60 p-6">
-                <p className="font-display text-[16px] font-semibold tracking-[-0.02em]">
-                  Lembre-se
-                </p>
-                <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted">
-                  Você vê o projeto pronto antes de pagar. Solicite as alterações
-                  que quiser — ajustamos tudo até ficar do seu jeito.
-                </p>
-              </div>
-            </Reveal>
           </div>
         </div>
       </Section>

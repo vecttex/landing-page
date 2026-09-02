@@ -5,6 +5,7 @@ import {
   Gauge,
   Search,
   MessageCircle,
+  MessageSquare,
   Layers,
   LifeBuoy,
   ClipboardList,
@@ -12,6 +13,13 @@ import {
   Presentation,
   CheckCircle2,
   Server,
+  Eye,
+  Compass,
+  Gem,
+  Users,
+  FileText,
+  Image,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 
@@ -22,6 +30,7 @@ const MAP: Record<string, LucideIcon> = {
   Gauge,
   Search,
   MessageCircle,
+  MessageSquare,
   Layers,
   LifeBuoy,
   ClipboardList,
@@ -29,6 +38,13 @@ const MAP: Record<string, LucideIcon> = {
   Presentation,
   CheckCircle2,
   Server,
+  Eye,
+  Compass,
+  Gem,
+  Users,
+  FileText,
+  Image,
+  Target,
 };
 
 export function Icon({

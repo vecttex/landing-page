@@ -1,9 +1,8 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Servicos from "./pages/Servicos";
-import Processo from "./pages/Processo";
 import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
 
@@ -14,8 +13,12 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/servicos" element={<Servicos />} />
-        <Route path="/processo" element={<Processo />} />
         <Route path="/contato" element={<Contato />} />
+        {/* O processo passou a ser uma seção de Serviços — links antigos seguem válidos */}
+        <Route
+          path="/processo"
+          element={<Navigate to="/servicos#processo" replace />}
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

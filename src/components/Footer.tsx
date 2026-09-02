@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, MapPin, Clock } from "lucide-react";
-import { BRAND, CONTACT, NAV, PROJECT_TYPES, waLink } from "../lib/site";
+import { ArrowUpRight, Mail, MapPin, Globe, Clock } from "lucide-react";
+import { BRAND, CONTACT, NAV, PROJECT_TYPES, waLink } from "../content";
 import { Logo } from "./Logo";
 import { WhatsAppGlyph } from "./WhatsAppFab";
 
@@ -14,9 +14,7 @@ export function Footer() {
           <div>
             <Logo symbolClass="h-[58px]" wordClass="h-[30px]" withSlogan />
             <p className="mt-6 max-w-xs text-[14px] leading-relaxed text-muted">
-              Soluções digitais profissionais para apresentar empresas na
-              internet. Projetos personalizados, atendimento próximo e suporte
-              via WhatsApp.
+              {BRAND.claim}
             </p>
             <a
               href={waLink()}
@@ -77,7 +75,11 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
-                <span>{CONTACT.city}</span>
+                <span>{CONTACT.address}</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Globe className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
+                <span>{CONTACT.coverage}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
