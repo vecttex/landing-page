@@ -10,7 +10,7 @@ export function Footer() {
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]" />
 
       <div className="relative mx-auto w-full max-w-[1200px] px-5 py-16 sm:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr_1fr_1.1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr_1fr_1.25fr]">
           <div>
             <Logo symbolClass="h-[58px]" wordClass="h-[30px]" withSlogan />
             <p className="mt-6 max-w-xs text-[14px] leading-relaxed text-muted">
