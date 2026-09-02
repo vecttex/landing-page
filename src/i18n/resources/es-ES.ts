@@ -1,3 +1,11 @@
+/* -------------------------------------------------------------------------
+ * es-ES — traducción del bundle estándar.
+ *
+ * Tipado como `Resources`: el compilador rechaza claves faltantes, claves
+ * adicionales o listas con una cantidad de elementos diferente a pt-BR.
+ * La estructura y el orden de las claves siguen los bundles de referencia.
+ * ---------------------------------------------------------------------- */
+
 import type { Resources } from "../types";
 
 export const esES: Resources = {
@@ -15,7 +23,12 @@ export const esES: Resources = {
     claim:
       "Sitios web y aplicaciones para empresas que quieren ser tomadas en serio en internet.",
   },
-  nav: { home: "Inicio", about: "Sobre nosotros", services: "Servicios", contact: "Contacto" },
+  nav: {
+    home: "Inicio",
+    about: "Sobre nosotros",
+    services: "Servicios",
+    contact: "Contacto",
+  },
   common: {
     requestQuote: "Solicitar presupuesto",
     talkOnWhatsapp: "Hablar por WhatsApp",
@@ -32,18 +45,32 @@ export const esES: Resources = {
     hours: "· De lunes a viernes, de 09:00 a 19:00\n· Sábados, de 09:00 a 13:00",
     defaultMessage:
       "¡Hola! Llegué desde el sitio de Vecttex y me gustaría hablar sobre un proyecto.",
-    labels: { email: "Correo electrónico", address: "Dirección", coverage: "Área de atención", hours: "Horarios" },
+    labels: {
+      email: "Correo electrónico",
+      address: "Dirección",
+      coverage: "Área de atención",
+      hours: "Horarios",
+    },
   },
-  footer: { nav: "Navegación", projects: "Proyectos", contact: "Contacto", credit: "Hecho con atención a cada detalle" },
+  footer: {
+    nav: "Navegación",
+    projects: "Proyectos",
+    contact: "Contacto",
+    credit: "Hecho con atención a cada detalle",
+  },
   fab: {
     status: "Atención en línea",
     lead: "Resuelve tus dudas ahora mismo con nuestro equipo por WhatsApp.",
     action: "Iniciar conversación",
   },
+  /* ------------------------------------------------------------------ */
+  /*  HOME                                                              */
+  /* ------------------------------------------------------------------ */
   home: {
     hero: {
       badge: "Sitios web, aplicaciones y soluciones para empresas",
-      title: "Sitios web y aplicaciones<br/>listos para<br/><accent>tu empresa</accent>",
+      title:
+        "Sitios web y aplicaciones<br/>listos para<br/><accent>tu empresa</accent>",
       lead: "Desarrollamos sitios web y aplicaciones alineados con tu negocio, con atención directa por WhatsApp desde el primer contacto hasta la entrega.",
       cta: "Ver nuestros servicios",
     },
@@ -60,7 +87,8 @@ export const esES: Resources = {
     ],
     about: {
       eyebrow: "Quiénes somos",
-      title: "Un equipo enfocado en<brMd/> hacer que tu empresa<brMd/><accent>se vea como es.</accent>",
+      title:
+        "Un equipo enfocado en<brMd/> hacer que tu empresa<brMd/><accent>se vea como es.</accent>",
       lead: "Un equipo de tecnología que empieza por entender tu negocio, no el diseño. Cada proyecto parte de lo que tu empresa necesita comunicar.",
       cta: "Conoce Vecttex",
     },
@@ -83,10 +111,14 @@ export const esES: Resources = {
       cta: "Ver el proceso completo",
     },
   },
+  /* ------------------------------------------------------------------ */
+  /*  ABOUT                                                             */
+  /* ------------------------------------------------------------------ */
   about: {
     hero: {
       eyebrow: "Sobre nosotros",
-      title: "Somos el equipo detrás de los <accent>sitios web que presentan</accent> tu negocio.",
+      title:
+        "Somos el equipo detrás de los <accent>sitios web que presentan</accent> tu negocio.",
       lead: "Vecttex es una empresa de tecnología dedicada a negocios que quieren una presencia digital a la altura de lo que ofrecen en el mundo real: sitios web, aplicaciones móviles y soluciones digitales para empresas.",
     },
     manifesto: {
@@ -97,24 +129,61 @@ export const esES: Resources = {
         "Cada proyecto se construye a partir del objetivo del cliente, ya sea un sitio institucional, una landing page, un catálogo en línea o algo fuera de lo habitual. El formato y el nivel de personalización se definen contigo, según lo que el proyecto necesita.",
       ],
     },
-    devices: { web: { label: "Web", desc: "Diseño amplio y bien estructurado" }, mobile: { label: "Móvil", desc: "Perfecto en la pantalla del teléfono" } },
+    devices: {
+      web: { label: "Web", desc: "Diseño amplio y bien estructurado" },
+      mobile: { label: "Móvil", desc: "Perfecto en la pantalla del teléfono" },
+    },
     principles: {
       eyebrow: "Nuestros principios",
       title: "Lo que guía cada proyecto",
       lead: "Cuatro compromisos que aplicamos en cada trabajo, sin importar el tamaño de la empresa.",
       items: [
-        { id: "clarity", title: "Claridad ante todo", desc: "Explicamos cada etapa con un lenguaje sencillo. Nunca te quedas sin saber qué sucede con tu proyecto." },
-        { id: "objective", title: "Objetivo antes que diseño", desc: "Antes de pensar en el diseño, entendemos qué necesita comunicar tu negocio y a quién." },
-        { id: "craft", title: "Acabado premium", desc: "Tipografía, espaciado, velocidad y detalle. Eso es lo que separa un sitio amateur de uno profesional." },
-        { id: "closeness", title: "Atención cercana", desc: "Hablas directamente por WhatsApp con el equipo que desarrolla tu proyecto." },
+        {
+          id: "clarity",
+          title: "Claridad ante todo",
+          desc: "Explicamos cada etapa con un lenguaje sencillo. Nunca te quedas sin saber qué sucede con tu proyecto.",
+        },
+        {
+          id: "objective",
+          title: "Objetivo antes que diseño",
+          desc: "Antes de pensar en el diseño, entendemos qué necesita comunicar tu negocio y a quién.",
+        },
+        {
+          id: "craft",
+          title: "Acabado premium",
+          desc: "Tipografía, espaciado, velocidad y detalle. Eso es lo que separa un sitio amateur de uno profesional.",
+        },
+        {
+          id: "closeness",
+          title: "Atención cercana",
+          desc: "Hablas directamente por WhatsApp con el equipo que desarrolla tu proyecto.",
+        },
       ],
     },
     links: [
-      { id: "services", label: "Servicios", title: "Lo que hacemos", desc: "Lo que incluye cada proyecto y los formatos que desarrollamos." },
-      { id: "process", label: "Proceso", title: "Cómo trabajamos", desc: "Las cinco etapas del proyecto, desde el primer contacto hasta la entrega." },
-      { id: "contact", label: "Contacto", title: "Hablemos", desc: "Cuéntanos qué necesitas y recibe una respuesta de nuestro equipo por WhatsApp." },
+      {
+        id: "services",
+        label: "Servicios",
+        title: "Lo que hacemos",
+        desc: "Lo que incluye cada proyecto y los formatos que desarrollamos.",
+      },
+      {
+        id: "process",
+        label: "Proceso",
+        title: "Cómo trabajamos",
+        desc: "Las cinco etapas del proyecto, desde el primer contacto hasta la entrega.",
+      },
+      {
+        id: "contact",
+        label: "Contacto",
+        title: "Hablemos",
+        desc: "Cuéntanos qué necesitas y recibe una respuesta de nuestro equipo por WhatsApp.",
+      },
     ],
   },
+  /* ------------------------------------------------------------------ */
+  /*  SERVICES                                                          */
+  /* ------------------------------------------------------------------ */
   services: {
     hero: {
       eyebrow: "Servicios",
@@ -126,12 +195,36 @@ export const esES: Resources = {
       title: "Incluido en cada proyecto",
       lead: "Elijas el formato que elijas, estos elementos forman parte de todos los sitios web que desarrollamos.",
       items: [
-        { id: "design", title: "Diseño alineado con tu negocio", desc: "Un diseño adaptado a la identidad de tu empresa, con una jerarquía visual clara y una presentación que transmite confianza desde el primer vistazo." },
-        { id: "mobile", title: "Perfecto en el móvil", desc: "Tu sitio web impecable en el teléfono, la tableta y el ordenador, porque la mayoría de tus clientes llega desde un teléfono." },
-        { id: "performance", title: "Ligero y rápido", desc: "Imágenes optimizadas, código organizado y carga rápida para una navegación fluida con cualquier conexión." },
-        { id: "seo", title: "Listo para Google", desc: "Títulos, descripciones y estructura de contenido preparados para que encuentren tu negocio fácilmente." },
-        { id: "contact", title: "Contacto integrado", desc: "Botones y enlaces directos a WhatsApp que convierten las visitas al sitio en conversaciones reales con tu empresa." },
-        { id: "support", title: "Soporte del equipo", desc: "Dudas, ajustes y seguimiento con atención humana y directa durante el proyecto y después de la entrega." },
+        {
+          id: "design",
+          title: "Diseño alineado con tu negocio",
+          desc: "Un diseño adaptado a la identidad de tu empresa, con una jerarquía visual clara y una presentación que transmite confianza desde el primer vistazo.",
+        },
+        {
+          id: "mobile",
+          title: "Perfecto en el móvil",
+          desc: "Tu sitio web impecable en el teléfono, la tableta y el ordenador, porque la mayoría de tus clientes llega desde un teléfono.",
+        },
+        {
+          id: "performance",
+          title: "Ligero y rápido",
+          desc: "Imágenes optimizadas, código organizado y carga rápida para una navegación fluida con cualquier conexión.",
+        },
+        {
+          id: "seo",
+          title: "Listo para Google",
+          desc: "Títulos, descripciones y estructura de contenido preparados para que encuentren tu negocio fácilmente.",
+        },
+        {
+          id: "contact",
+          title: "Contacto integrado",
+          desc: "Botones y enlaces directos a WhatsApp que convierten las visitas al sitio en conversaciones reales con tu empresa.",
+        },
+        {
+          id: "support",
+          title: "Soporte del equipo",
+          desc: "Dudas, ajustes y seguimiento con atención humana y directa durante el proyecto y después de la entrega.",
+        },
       ],
     },
     types: {
@@ -139,25 +232,110 @@ export const esES: Resources = {
       title: "Formatos que desarrollamos",
       lead: "Elige el formato que combina con tu objetivo o cuéntanos qué necesitas y construiremos la solución contigo.",
       items: [
-        { id: "institucional", title: "Sitio web institucional", tag: "Autoridad", desc: "La presencia oficial de tu empresa: historia, servicios, diferenciales y canales de contacto en un solo lugar.", points: ["Páginas internas", "Sobre nosotros y servicios", "Contacto integrado"] },
-        { id: "apresentacao", title: "Sitio web de presentación", tag: "Vitrina", desc: "Ideal para establecimientos que necesitan mostrar el espacio, el menú, los servicios y la ubicación.", points: ["Galería de fotos", "Ubicación y horarios", "Contacto rápido"] },
-        { id: "landing", title: "Landing page", tag: "Conversión", desc: "Una página objetiva y persuasiva, creada para divulgar una oferta, un servicio o una campaña específica.", points: ["Enfocada en la acción", "Carga rápida", "Lista para anuncios"] },
-        { id: "portfolio", title: "Portafolio", tag: "Trabajos", desc: "Para profesionales y estudios que necesitan mostrar proyectos, casos y resultados con elegancia.", points: ["Galerías organizadas", "Páginas de proyecto", "Estilo editorial"] },
-        { id: "catalogo", title: "Catálogo en línea", tag: "Productos", desc: "Tus productos y servicios organizados por categoría, con pedidos o presupuestos directamente por WhatsApp.", points: ["Categorías y filtros", "Fichas de producto", "Pedidos por WhatsApp"] },
-        { id: "personalizado", title: "Proyectos personalizados", tag: "A medida", desc: "¿Necesitas algo diferente? Estudiamos la necesidad y desarrollamos una solución específica para tu caso.", points: ["Alcance a medida", "Funciones específicas", "Análisis previo"] },
+        {
+          id: "institucional",
+          title: "Sitio web institucional",
+          tag: "Autoridad",
+          desc: "La presencia oficial de tu empresa: historia, servicios, diferenciales y canales de contacto en un solo lugar.",
+          points: ["Páginas internas", "Sobre nosotros y servicios", "Contacto integrado"],
+        },
+        {
+          id: "apresentacao",
+          title: "Sitio web de presentación",
+          tag: "Vitrina",
+          desc: "Ideal para establecimientos que necesitan mostrar el espacio, el menú, los servicios y la ubicación.",
+          points: ["Galería de fotos", "Ubicación y horarios", "Contacto rápido"],
+        },
+        {
+          id: "landing",
+          title: "Landing page",
+          tag: "Conversión",
+          desc: "Una página objetiva y persuasiva, creada para divulgar una oferta, un servicio o una campaña específica.",
+          points: ["Enfocada en la acción", "Carga rápida", "Lista para anuncios"],
+        },
+        {
+          id: "portfolio",
+          title: "Portafolio",
+          tag: "Trabajos",
+          desc: "Para profesionales y estudios que necesitan mostrar proyectos, casos y resultados con elegancia.",
+          points: ["Galerías organizadas", "Páginas de proyecto", "Estilo editorial"],
+        },
+        {
+          id: "catalogo",
+          title: "Catálogo en línea",
+          tag: "Productos",
+          desc: "Tus productos y servicios organizados por categoría, con pedidos o presupuestos directamente por WhatsApp.",
+          points: ["Categorías y filtros", "Fichas de producto", "Pedidos por WhatsApp"],
+        },
+        {
+          id: "personalizado",
+          title: "Proyectos personalizados",
+          tag: "A medida",
+          desc: "¿Necesitas algo diferente? Estudiamos la necesidad y desarrollamos una solución específica para tu caso.",
+          points: ["Alcance a medida", "Funciones específicas", "Análisis previo"],
+        },
       ],
-      custom: { title: "¿Tu proyecto no encaja en ninguno de estos formatos?", desc: "No hay problema. Evaluamos tu necesidad y desarrollamos una solución a medida, con el alcance definido contigo.", cta: "Describir mi proyecto" },
+      custom: {
+        title: "¿Tu proyecto no encaja en ninguno de estos formatos?",
+        desc: "No hay problema. Evaluamos tu necesidad y desarrollamos una solución a medida, con el alcance definido contigo.",
+        cta: "Describir mi proyecto",
+      },
     },
     process: {
       eyebrow: "Cómo funciona",
       title: "Cinco etapas,<br/> <accent>del briefing a la entrega.</accent>",
       lead: "Un proceso transparente, pensado para quienes no conocen de tecnología y solo quieren un sitio web profesional funcionando, sin complicaciones.",
       items: [
-        { id: "discovery", title: "Entendemos tu negocio", desc: "Hablamos por WhatsApp para conocer tu empresa, el público al que atiendes y el objetivo del proyecto.", detail: ["Conversación inicial sin compromiso", "Mapeo de objetivos y referencias", "Definición clara de lo que el sitio debe resolver"] },
-        { id: "planning", title: "Planificamos el proyecto", desc: "Definimos las secciones, la estructura de las páginas y el formato ideal para lo que necesitas presentar.", detail: ["Estructura y mapa de páginas", "Dirección visual y organización del contenido", "Alcance y plazo acordados antes de empezar"] },
-        { id: "development", title: "Desarrollamos el sitio web", desc: "Nuestro equipo crea el proyecto con un diseño alineado con tu negocio, versión móvil y atención a cada detalle.", detail: ["Diseño y desarrollo del proyecto", "Versión adaptable para todos los dispositivos", "Pruebas de navegación y rendimiento"] },
-        { id: "presentation", title: "Presentamos el resultado", desc: "Ves el proyecto terminado, navegas por cada pantalla y señalas lo que quieres cambiar. Los ajustes se hacen en esta etapa.", detail: ["Presentación completa del proyecto", "Indicas los ajustes que quieras", "Lo refinamos hasta que coincida con tus expectativas"] },
-        { id: "delivery", title: "Aprobación y entrega", desc: "Con todo acordado, publicamos el proyecto y seguimos disponibles para dudas y soporte.", detail: ["Publicación del proyecto aprobado", "Orientaciones de uso", "Soporte continuo por WhatsApp"] },
+        {
+          id: "discovery",
+          title: "Entendemos tu negocio",
+          desc: "Hablamos por WhatsApp para conocer tu empresa, el público al que atiendes y el objetivo del proyecto.",
+          detail: [
+            "Conversación inicial sin compromiso",
+            "Mapeo de objetivos y referencias",
+            "Definición clara de lo que el sitio debe resolver",
+          ],
+        },
+        {
+          id: "planning",
+          title: "Planificamos el proyecto",
+          desc: "Definimos las secciones, la estructura de las páginas y el formato ideal para lo que necesitas presentar.",
+          detail: [
+            "Estructura y mapa de páginas",
+            "Dirección visual y organización del contenido",
+            "Alcance y plazo acordados antes de empezar",
+          ],
+        },
+        {
+          id: "development",
+          title: "Desarrollamos el sitio web",
+          desc: "Nuestro equipo crea el proyecto con un diseño alineado con tu negocio, versión móvil y atención a cada detalle.",
+          detail: [
+            "Diseño y desarrollo del proyecto",
+            "Versión adaptable para todos los dispositivos",
+            "Pruebas de navegación y rendimiento",
+          ],
+        },
+        {
+          id: "presentation",
+          title: "Presentamos el resultado",
+          desc: "Ves el proyecto terminado, navegas por cada pantalla y señalas lo que quieres cambiar. Los ajustes se hacen en esta etapa.",
+          detail: [
+            "Presentación completa del proyecto",
+            "Indicas los ajustes que quieras",
+            "Lo refinamos hasta que coincida con tus expectativas",
+          ],
+        },
+        {
+          id: "delivery",
+          title: "Aprobación y entrega",
+          desc: "Con todo acordado, publicamos el proyecto y seguimos disponibles para dudas y soporte.",
+          detail: [
+            "Publicación del proyecto aprobado",
+            "Orientaciones de uso",
+            "Soporte continuo por WhatsApp",
+          ],
+        },
       ],
     },
     prepare: {
@@ -194,6 +372,9 @@ export const esES: Resources = {
       ],
     },
   },
+  /* ------------------------------------------------------------------ */
+  /*  CONTACT                                                           */
+  /* ------------------------------------------------------------------ */
   contactPage: {
     hero: {
       eyebrow: "Contacto",
@@ -213,7 +394,8 @@ export const esES: Resources = {
       typeLabel: "Tipo de proyecto",
       typeUnknown: "Todavía no lo sé",
       messageLabel: "Sobre el proyecto",
-      messagePlaceholder: "Cuéntanos qué hace tu empresa y qué esperas del sitio web...",
+      messagePlaceholder:
+        "Cuéntanos qué hace tu empresa y qué esperas del sitio web...",
       submit: "Enviar por WhatsApp",
       sent: "¡Conversación abierta en WhatsApp! Si no se abrió, haz clic en el botón verde en la esquina de la pantalla.",
       privacy: "Al enviar, se abrirá una conversación de WhatsApp con el resumen completado. Este sitio no almacena ningún dato.",
@@ -239,13 +421,17 @@ export const esES: Resources = {
     home: "Volver al inicio",
     contact: "Ir al contacto",
   },
+  /* ------------------------------------------------------------------ */
+  /*  Shared blocks                                                     */
+  /* ------------------------------------------------------------------ */
   whatsappSupport: {
     eyebrow: "Atención",
     title: "Soporte por WhatsApp,<br/><accent>con personas reales.</accent>",
     lead: "Nada de formularios sin respuesta ni sistemas de tickets. Hablas directamente con quien desarrolla tu proyecto, durante el desarrollo y después de la entrega.",
   },
   cta: {
-    title: "Cuéntanos sobre tu negocio.<br/><accent>Nosotros nos ocupamos del resto.</accent>",
+    title:
+      "Cuéntanos sobre tu negocio.<br/><accent>Nosotros nos ocupamos del resto.</accent>",
     lead: "Una conversación rápida por WhatsApp es suficiente para entender tu proyecto, sin compromiso.",
   },
   mockups: {
@@ -257,9 +443,18 @@ export const esES: Resources = {
       inputPlaceholder: "Mensaje",
       messages: [
         { text: "¡Hola! Quiero un sitio web para mi empresa 👋", time: "09:12" },
-        { text: "¡Hola! Qué bien. Cuéntame un poco sobre tu negocio.", time: "09:12" },
-        { text: "Tengo un restaurante y necesito mostrar el menú", time: "09:14" },
-        { text: "Perfecto. Prepararé la estructura, elegiré las secciones y te presentaré el proyecto terminado ✅", time: "09:15" },
+        {
+          text: "¡Hola! Qué bien. Cuéntame un poco sobre tu negocio.",
+          time: "09:12",
+        },
+        {
+          text: "Tengo un restaurante y necesito mostrar el menú",
+          time: "09:14",
+        },
+        {
+          text: "Perfecto. Prepararé la estructura, elegiré las secciones y te presentaré el proyecto terminado ✅",
+          time: "09:15",
+        },
       ],
     },
   },
