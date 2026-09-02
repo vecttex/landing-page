@@ -1,19 +1,23 @@
 import { motion } from "framer-motion";
 import { Check, CheckCheck, Lock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { LogoMark } from "./Logo";
-import { BRAND } from "../content";
+import { CHAT_ROLES, SITE } from "../config/site";
 
 /* ------------------------------------------------------------------ */
 /*  Browser window mockup with a miniature website rendered inside     */
 /* ------------------------------------------------------------------ */
 
 export function BrowserMockup({
-  url = "suaempresa.com.br",
+  url,
   className = "",
 }: {
   url?: string;
   className?: string;
 }) {
+  const { t } = useTranslation();
+  const address = url ?? t("mockups.browserUrl");
+
   return (
     <div
       className={`overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_50px_110px_-40px_rgba(0,0,0,0.95)] ${className}`}
@@ -27,7 +31,7 @@ export function BrowserMockup({
         </div>
         <div className="mx-auto flex w-[62%] items-center justify-center gap-1.5 rounded-md bg-ink px-3 py-1.5">
           <Lock className="h-2.5 w-2.5 text-wa" strokeWidth={2.4} />
-          <span className="font-label text-[9.5px] tracking-wide text-muted">{url}</span>
+          <span className="font-label text-[9.5px] tracking-wide text-muted">{address}</span>
         </div>
         <div className="flex w-[52px] justify-end gap-1">
           <span className="h-1 w-3.5 rounded-full bg-line-2" />
@@ -158,14 +162,10 @@ export function PhoneSiteMockup({ className = "" }: { className?: string }) {
 /*  WhatsApp style conversation                                        */
 /* ------------------------------------------------------------------ */
 
-const MESSAGES = [
-  { from: "them", text: "Olá! Quero um site para a minha empresa 👋", time: "09:12" },
-  { from: "us", text: "Oi! Que ótimo. Me conta um pouco sobre o seu negócio?", time: "09:12" },
-  { from: "them", text: "Tenho um restaurante e preciso mostrar o cardápio", time: "09:14" },
-  { from: "us", text: "Perfeito. Monto a estrutura, escolho as seções e te apresento o projeto pronto ✅", time: "09:15" },
-];
-
 export function ChatMockup({ className = "" }: { className?: string }) {
+  const { t } = useTranslation();
+  const messages = t("mockups.chat.messages", { returnObjects: true });
+
   return (
     <PhoneFrame className={className}>
       <div className="w-[236px]">
@@ -179,42 +179,50 @@ export function ChatMockup({ className = "" }: { className?: string }) {
             <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#12181a] bg-wa" />
           </div>
           <div className="leading-tight">
-            <p className="text-[11px] font-semibold text-fg">{BRAND.name} · Atendimento</p>
-            <p className="font-label text-[8px] uppercase tracking-[0.14em] text-wa">on-line agora</p>
+            <p className="text-[11px] font-semibold text-fg">
+              {t("mockups.chat.title", { brand: SITE.name })}
+            </p>
+            <p className="font-label text-[8px] uppercase tracking-[0.14em] text-wa">
+              {t("mockups.chat.status")}
+            </p>
           </div>
         </div>
 
         {/* body */}
         <div className="relative space-y-2 bg-[#0a0f10] px-3 py-3.5">
           <div className="dotted absolute inset-0 opacity-[0.35]" />
-          {MESSAGES.map((m, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.25 + i * 0.28, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className={`relative flex ${m.from === "us" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[85%] rounded-xl px-2.5 py-1.5 text-[10.5px] leading-snug ${
-                  m.from === "us"
-                    ? "rounded-br-sm bg-[#12503a] text-[#e9fff3]"
-                    : "rounded-bl-sm bg-[#1b2124] text-fg/90"
-                }`}
+          {messages.map((m, i) => {
+            /* Quem fala é estrutura da ilustração, não texto: vem de site.ts. */
+            const fromUs = CHAT_ROLES[i] === "us";
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.25 + i * 0.28, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className={`relative flex ${fromUs ? "justify-end" : "justify-start"}`}
               >
-                {m.text}
-                <span className="mt-0.5 flex items-center justify-end gap-1 text-[7.5px] text-white/40">
-                  {m.time}
-                  {m.from === "us" ? (
-                    <CheckCheck className="h-2.5 w-2.5 text-[#53bdeb]" />
-                  ) : (
-                    <Check className="h-2.5 w-2.5 opacity-0" />
-                  )}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+                <div
+                  className={`max-w-[85%] rounded-xl px-2.5 py-1.5 text-[10.5px] leading-snug ${
+                    fromUs
+                      ? "rounded-br-sm bg-[#12503a] text-[#e9fff3]"
+                      : "rounded-bl-sm bg-[#1b2124] text-fg/90"
+                  }`}
+                >
+                  {m.text}
+                  <span className="mt-0.5 flex items-center justify-end gap-1 text-[7.5px] text-white/40">
+                    {m.time}
+                    {fromUs ? (
+                      <CheckCheck className="h-2.5 w-2.5 text-[#53bdeb]" />
+                    ) : (
+                      <Check className="h-2.5 w-2.5 opacity-0" />
+                    )}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -239,7 +247,7 @@ export function ChatMockup({ className = "" }: { className?: string }) {
         {/* input */}
         <div className="flex items-center gap-2 bg-[#12181a] px-3 py-2.5">
           <div className="flex-1 rounded-full bg-[#1e2528] px-3 py-1.5 text-[9px] text-white/35">
-            Mensagem
+            {t("mockups.chat.inputPlaceholder")}
           </div>
           <div className="flex h-6 w-6 items-center justify-center rounded-full bg-wa">
             <svg viewBox="0 0 24 24" className="h-3 w-3 fill-[#04240f]">

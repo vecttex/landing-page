@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BRAND } from "../content";
+import { SITE } from "../config/site";
 
 /**
  * Geometria oficial do símbolo Vecttex (Manual de Marca, cap. 03):
@@ -67,20 +67,20 @@ export function Logo({
   withSlogan?: boolean;
 }) {
   return (
-    <Link to="/" className="group inline-flex flex-col" aria-label={BRAND.name}>
+    <Link to="/" className="group inline-flex flex-col" aria-label={SITE.name}>
       <span className="flex items-center gap-[3px]">
         <LogoMark
           className={`${symbolClass} w-auto transition-transform duration-500 group-hover:-translate-y-[2px]`}
         />
         <img
-          src="/brand/logotipo-branco-ouro.svg"
-          alt={BRAND.name}
+          src={SITE.wordmark}
+          alt={SITE.name}
           className={`${wordClass} w-auto`}
         />
       </span>
       {withSlogan && (
         <span className="slogan mt-2.5 font-label text-[8.5px] font-medium text-muted">
-          {BRAND.slogan}
+          {SITE.slogan}
         </span>
       )}
     </Link>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { WhatsAppFab } from "./WhatsAppFab";
+import { DocumentMeta } from "./DocumentMeta";
 
 export function Layout() {
   const { pathname, hash } = useLocation();
@@ -21,6 +22,7 @@ export function Layout() {
 
   return (
     <div className="relative min-h-screen bg-ink">
+      <DocumentMeta />
       <Header />
       <motion.main
         key={pathname}

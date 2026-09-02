@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { NAV } from "../content";
+import { useTranslation } from "react-i18next";
+import { NAV_ITEMS } from "../config/site";
 import { Logo } from "./Logo";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function Header() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
@@ -39,7 +42,7 @@ export function Header() {
           <Logo />
 
           <nav className="hidden items-center gap-1 lg:flex">
-            {NAV.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
@@ -58,7 +61,7 @@ export function Header() {
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     )}
-                    <span className="relative">{item.label}</span>
+                    <span className="relative">{t(`nav.${item.id}`)}</span>
                   </>
                 )}
               </NavLink>
@@ -66,18 +69,21 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2.5">
+            {/* No celular o seletor vive dentro do menu, junto com a
+                navegação — aqui ele apareceria espremido ao lado do burger. */}
+            <LocaleSwitcher className="hidden sm:inline-flex" />
             {/* CTA neutro: o contato por WhatsApp fica a cargo do botão
                 flutuante, presente em todas as páginas. */}
             <Link
               to="/contato"
               className="hidden items-center gap-2 rounded-full border border-line-2/70 bg-white/[0.02] px-5 py-2.5 text-[13px] font-semibold text-fg transition-all duration-300 hover:border-accent/60 hover:bg-accent/[0.07] hover:-translate-y-0.5 sm:flex"
             >
-              Pedir orçamento
+              {t("common.requestQuote")}
               <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
-              aria-label="Abrir menu"
+              aria-label={t("common.openMenuAria")}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/[0.03] text-fg transition-colors hover:border-accent/60 lg:hidden"
             >
               {open ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
@@ -98,7 +104,7 @@ export function Header() {
             <div className="grid-lines absolute inset-0 opacity-40" />
             <div className="relative flex h-full flex-col justify-between px-6 pb-10 pt-[112px]">
               <nav className="flex flex-col">
-                {NAV.map((item, i) => (
+                {NAV_ITEMS.map((item, i) => (
                   <motion.div
                     key={item.to}
                     initial={{ opacity: 0, x: -20 }}
@@ -110,7 +116,7 @@ export function Header() {
                       className="flex items-center justify-between border-b border-line/70 py-5"
                     >
                       <span className="font-display text-3xl font-semibold tracking-[-0.03em] text-fg">
-                        {item.label}
+                        {t(`nav.${item.id}`)}
                       </span>
                       <span className="font-label text-[10px] text-muted">
                         0{i + 1}
@@ -125,12 +131,14 @@ export function Header() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
+                className="space-y-5"
               >
+                <LocaleSwitcher />
                 <Link
                   to="/contato"
                   className="flex items-center justify-center gap-2.5 rounded-2xl bg-accent px-6 py-4 text-[15px] font-semibold text-[#111111]"
                 >
-                  Pedir orçamento
+                  {t("common.requestQuote")}
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </motion.div>

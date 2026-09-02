@@ -2,20 +2,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Check, Plus, Minus, ShieldCheck } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import {
-  BRAND,
-  CONTACT,
-  PILLARS,
-  DELIVERABLES,
-  PROJECT_TYPES,
-  PROCESS,
-  EXTRAS,
-  FAQ,
+  DELIVERABLE_ICON,
+  EXTRA_ICON,
+  PILLAR_ICON,
+  PROCESS_ICON,
+  PROJECT_TYPE_IMAGE,
+  SITE,
   waLink,
-} from "../content";
+} from "../config/site";
 import { Button, Eyebrow, Reveal, Section, SectionHeading, GlowOrb } from "./ui";
 import { LogoMark } from "./Logo";
 import { Icon } from "./Icon";
+import { RichText } from "./RichText";
 import { ChatMockup } from "./Mockups";
 import { WhatsAppGlyph } from "./WhatsAppFab";
 
@@ -63,14 +63,17 @@ export function PageHero({
 /* Versão curta dos três pilares. Cada um é desenvolvido por extenso em
    uma página específica — aqui aparecem só como assinatura. */
 export function TrustStrip() {
+  const { t } = useTranslation();
+  const pillars = t("home.pillars", { returnObjects: true });
+
   return (
     <div className="relative border-y border-line bg-ink-2/60">
       <div className="mx-auto grid w-full max-w-[1200px] gap-px px-5 sm:grid-cols-3 sm:px-8">
-        {PILLARS.map((p, i) => (
-          <Reveal key={p.label} delay={i * 0.07}>
+        {pillars.map((p, i) => (
+          <Reveal key={p.id} delay={i * 0.07}>
             <div className="flex items-center gap-3 py-6 lg:py-7">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/25 bg-accent/10">
-                <Icon name={p.icon} className="h-4 w-4 text-accent" strokeWidth={1.8} />
+                <Icon name={PILLAR_ICON[p.id]} className="h-4 w-4 text-accent" strokeWidth={1.8} />
               </span>
               <span className="text-[12.5px] font-medium leading-tight text-fg/85 sm:text-[13.5px]">
                 {p.label}
@@ -86,18 +89,21 @@ export function TrustStrip() {
 /* ---------------------------------------------------------------- */
 
 export function DeliverablesGrid({ limit }: { limit?: number }) {
-  const list = limit ? DELIVERABLES.slice(0, limit) : DELIVERABLES;
+  const { t } = useTranslation();
+  const all = t("services.deliverables.items", { returnObjects: true });
+  const list = limit ? all.slice(0, limit) : all;
+
   return (
     <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
       {list.map((s, i) => (
-        <Reveal key={s.title} delay={(i % 3) * 0.06}>
+        <Reveal key={s.id} delay={(i % 3) * 0.06}>
           <div className="group relative h-full bg-ink-2 p-7 transition-colors duration-500 hover:bg-surface">
             <span className="absolute right-6 top-6 font-label text-[10px] text-muted/35">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line-2/60 bg-gradient-to-br from-white/[0.07] to-transparent transition-all duration-500 group-hover:border-accent/50 group-hover:from-accent/20">
               <Icon
-                name={s.icon}
+                name={DELIVERABLE_ICON[s.id]}
                 className="h-5 w-5 text-accent-2 transition-colors group-hover:text-accent"
               />
             </span>
@@ -118,32 +124,35 @@ export function DeliverablesGrid({ limit }: { limit?: number }) {
 /* ---------------------------------------------------------------- */
 
 export function TypesGrid({ limit }: { limit?: number }) {
-  const list = limit ? PROJECT_TYPES.slice(0, limit) : PROJECT_TYPES;
+  const { t } = useTranslation();
+  const all = t("services.types.items", { returnObjects: true });
+  const list = limit ? all.slice(0, limit) : all;
+
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {list.map((t, i) => (
-        <Reveal key={t.title} delay={(i % 3) * 0.08}>
+      {list.map((type, i) => (
+        <Reveal key={type.id} delay={(i % 3) * 0.08}>
           <article className="group relative h-full overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-500 hover:-translate-y-1.5 hover:border-line-2">
             <div className="relative h-44 overflow-hidden">
               <img
-                src={t.image}
-                alt={t.title}
+                src={PROJECT_TYPE_IMAGE[type.id]}
+                alt={type.title}
                 loading="lazy"
                 className="h-full w-full scale-105 object-cover grayscale transition-all duration-[900ms] group-hover:scale-100 group-hover:grayscale-0"
               />
               <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 font-label text-[9px] uppercase tracking-[0.18em] text-fg/80 backdrop-blur">
-                {t.tag}
+                {type.tag}
               </span>
             </div>
             <div className="relative p-6">
               <h3 className="font-display text-[21px] font-semibold tracking-[-0.025em] text-fg">
-                {t.title}
+                {type.title}
               </h3>
               <p className="mt-3 text-[13.8px] leading-relaxed text-muted">
-                {t.desc}
+                {type.desc}
               </p>
               <ul className="mt-5 space-y-2">
-                {t.points.map((p) => (
+                {type.points.map((p) => (
                   <li key={p} className="flex items-center gap-2.5 text-[12.5px] text-fg/70">
                     <Check className="h-3.5 w-3.5 shrink-0 text-accent" strokeWidth={2.4} />
                     {p}
@@ -163,13 +172,16 @@ export function TypesGrid({ limit }: { limit?: number }) {
 /* Resumo do método para a home: uma linha por etapa, sem repetir a
    timeline completa que vive na página Serviços. */
 export function ProcessSummary() {
+  const { t } = useTranslation();
+  const steps = t("services.process.items", { returnObjects: true });
+
   return (
     <ol className="divide-y divide-line border-y border-line">
-      {PROCESS.map((p, i) => (
-        <Reveal key={p.step} delay={i * 0.06}>
+      {steps.map((p, i) => (
+        <Reveal key={p.id} delay={i * 0.06}>
           <li className="group flex items-center gap-4 py-5 transition-colors sm:gap-6">
             <span className="font-label text-[12px] font-medium text-accent/70 transition-colors group-hover:text-accent">
-              {p.step}
+              {String(i + 1).padStart(2, "0")}
             </span>
             <h3 className="font-display text-[16px] font-medium tracking-[-0.015em] text-fg sm:text-[18px]">
               {p.title}
@@ -182,21 +194,24 @@ export function ProcessSummary() {
 }
 
 export function ProcessTimeline({ detailed = false }: { detailed?: boolean }) {
+  const { t } = useTranslation();
+  const steps = t("services.process.items", { returnObjects: true });
+
   return (
     <div className="relative">
       <div className="absolute left-[27px] top-4 hidden h-[calc(100%-2rem)] w-px bg-gradient-to-b from-accent via-line-2 to-transparent md:block" />
       <div className="space-y-4 md:space-y-0">
-        {PROCESS.map((p, i) => (
-          <Reveal key={p.step} delay={i * 0.08}>
+        {steps.map((p, i) => (
+          <Reveal key={p.id} delay={i * 0.08}>
             <div className="group relative flex gap-5 rounded-2xl border border-line bg-surface/40 p-6 transition-colors duration-500 hover:border-line-2 md:border-0 md:bg-transparent md:py-7 md:pl-0 md:hover:bg-transparent">
               <div className="relative z-10 shrink-0">
                 <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-line-2/70 bg-ink-2 font-label text-[13px] font-medium text-accent transition-all duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-[#111111]">
-                  {p.step}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
               <div className="pt-1 md:pl-4">
                 <div className="flex items-center gap-2.5">
-                  <Icon name={p.icon} className="h-4 w-4 text-accent-2" />
+                  <Icon name={PROCESS_ICON[p.id]} className="h-4 w-4 text-accent-2" />
                   <h3 className="font-display text-[20px] font-semibold tracking-[-0.02em] text-fg md:text-[23px]">
                     {p.title}
                   </h3>
@@ -229,26 +244,24 @@ export function ProcessTimeline({ detailed = false }: { detailed?: boolean }) {
 /* ---------------------------------------------------------------- */
 
 export function WhatsAppSupport() {
+  const { t } = useTranslation();
+
   return (
     <Section className="overflow-hidden">
       <div className="relative grid items-center gap-14 rounded-[28px] border border-line bg-gradient-to-br from-surface/80 via-ink-2 to-ink-2 p-8 sm:p-12 lg:grid-cols-[1.15fr_0.85fr] lg:p-16">
         <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-wa/12 blur-[110px]" />
         <div className="relative">
-          <Eyebrow className="text-wa!">Atendimento</Eyebrow>
+          <Eyebrow className="text-wa!">{t("whatsappSupport.eyebrow")}</Eyebrow>
           <h2 className="mt-5 font-display text-[clamp(1.9rem,4.4vw,3.1rem)] font-semibold leading-[1.04] tracking-[-0.03em]">
-            Suporte pelo WhatsApp,
-            <br />
-            <span className="text-gradient">com gente de verdade.</span>
+            <RichText k="whatsappSupport.title" />
           </h2>
           <p className="mt-6 max-w-lg text-[15.5px] leading-relaxed text-muted">
-            Nada de formulários sem resposta ou sistemas de ticket. Você fala
-            direto com quem está desenvolvendo o seu projeto — durante o
-            desenvolvimento e depois da entrega.
+            {t("whatsappSupport.lead")}
           </p>
 
           <p className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-wa/25 bg-wa/[0.08] px-4 py-2.5 text-[13px] font-medium text-wa">
             <WhatsAppGlyph className="h-4 w-4" />
-            {CONTACT.whatsappDisplay}
+            {SITE.whatsappDisplay}
           </p>
         </div>
 
@@ -270,26 +283,24 @@ export function WhatsAppSupport() {
 /* ---------------------------------------------------------------- */
 
 export function ExtrasSection() {
+  const { t } = useTranslation();
+  const extras = t("services.extras.items", { returnObjects: true });
+
   return (
     <Section id="adicionais">
       <SectionHeading
-        eyebrow="Serviços adicionais"
-        title={
-          <>
-            Além do site, se você
-            <br className="hidden sm:block" /> precisar de mais.
-          </>
-        }
-        lead="Serviços opcionais que você pode contratar junto com o projeto — com o escopo combinado antes de começar."
+        eyebrow={t("services.extras.eyebrow")}
+        title={<RichText k="services.extras.title" />}
+        lead={t("services.extras.lead")}
       />
 
       <div className="mt-14 grid gap-5 lg:grid-cols-2">
-        {EXTRAS.map((e, i) => (
-          <Reveal key={e.title} delay={i * 0.1}>
+        {extras.map((e, i) => (
+          <Reveal key={e.id} delay={i * 0.1}>
             <div className="group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/45 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 sm:p-10">
               <div className="stripe-accent pointer-events-none absolute -right-16 -top-16 h-40 w-40 rotate-12 opacity-40" />
               <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10">
-                <Icon name={e.icon} className="h-5 w-5 text-accent" />
+                <Icon name={EXTRA_ICON[e.id]} className="h-5 w-5 text-accent" />
               </span>
               <h3 className="mt-7 font-display text-[24px] font-semibold tracking-[-0.025em]">
                 {e.title}
@@ -320,28 +331,26 @@ export function ExtrasSection() {
 /* ---------------------------------------------------------------- */
 
 export function FaqSection() {
+  const { t } = useTranslation();
+  const faq = t("services.faq.items", { returnObjects: true });
   const [open, setOpen] = useState<number | null>(0);
+
   return (
     <Section>
       <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <SectionHeading
-            eyebrow="Dúvidas frequentes"
-            title={
-              <>
-                Tudo claro,
-                <br /> desde o começo.
-              </>
-            }
-            lead="Se ficar qualquer dúvida que não esteja aqui, é só chamar no WhatsApp pelo botão no canto da tela."
+            eyebrow={t("services.faq.eyebrow")}
+            title={<RichText k="services.faq.title" />}
+            lead={t("services.faq.lead")}
           />
         </div>
 
         <div className="divide-y divide-line border-y border-line">
-          {FAQ.map((f, i) => {
+          {faq.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q}>
+              <div key={f.id}>
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="flex w-full items-start justify-between gap-6 py-5 text-left"
@@ -379,6 +388,8 @@ export function FaqSection() {
 /* ---------------------------------------------------------------- */
 
 export function CTASection() {
+  const { t } = useTranslation();
+
   return (
     <Section className="pb-28">
       <div className="relative overflow-hidden rounded-[28px] border border-line bg-ink-2 px-7 py-16 text-center sm:px-14 md:py-24">
@@ -390,30 +401,27 @@ export function CTASection() {
           </Reveal>
           <Reveal delay={0.06}>
             <p className="slogan mt-6 font-label text-[9.5px] font-medium text-accent/75">
-              {BRAND.slogan}
+              {SITE.slogan}
             </p>
           </Reveal>
           <Reveal delay={0.07}>
             <h2 className="mt-6 font-display text-[clamp(2.1rem,5.4vw,3.9rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
-              Conte sobre o seu negócio.
-              <br />
-              <span className="text-gradient">O resto é com a gente.</span>
+              <RichText k="cta.title" />
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className="mx-auto mt-6 max-w-xl text-[15.5px] leading-relaxed text-muted">
-              Uma conversa rápida no WhatsApp já é o suficiente para entendermos
-              o seu projeto — e é sem compromisso.
+              {t("cta.lead")}
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href={waLink()} variant="wa">
+              <Button href={waLink(t("contact.defaultMessage"))} variant="wa">
                 <WhatsAppGlyph className="h-4.5 w-4.5" />
-                Falar no WhatsApp
+                {t("common.talkOnWhatsapp")}
               </Button>
               <Button to="/contato" variant="ghost">
-                Enviar meu projeto
+                {t("common.sendProject")}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
@@ -437,6 +445,8 @@ export function LinkCard({
   title: string;
   desc: string;
 }) {
+  const { t } = useTranslation();
+
   return (
     <Link
       to={to}
@@ -452,7 +462,7 @@ export function LinkCard({
         <p className="mt-2.5 text-[13.8px] leading-relaxed text-muted">{desc}</p>
       </div>
       <span className="mt-7 inline-flex items-center gap-2 text-[13px] font-semibold text-fg">
-        Ver mais
+        {t("common.seeMore")}
         <ArrowUpRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
       </span>
     </Link>

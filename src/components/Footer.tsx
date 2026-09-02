@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, MapPin, Globe, Clock } from "lucide-react";
-import { BRAND, CONTACT, NAV, PROJECT_TYPES, waLink } from "../content";
+import { useTranslation } from "react-i18next";
+import { NAV_ITEMS, SITE, waLink } from "../config/site";
 import { Logo } from "./Logo";
 import { WhatsAppGlyph } from "./WhatsAppFab";
 
 export function Footer() {
+  const { t } = useTranslation();
+  const types = t("services.types.items", { returnObjects: true });
+
   return (
     <footer className="relative overflow-hidden border-t border-line bg-ink-2">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]" />
@@ -14,31 +18,31 @@ export function Footer() {
           <div>
             <Logo symbolClass="h-[58px]" wordClass="h-[30px]" withSlogan />
             <p className="mt-6 max-w-xs text-[14px] leading-relaxed text-muted">
-              {BRAND.claim}
+              {t("brand.claim")}
             </p>
             <a
-              href={waLink()}
+              href={waLink(t("contact.defaultMessage"))}
               target="_blank"
               rel="noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-wa/30 bg-wa/10 px-4 py-2.5 text-[13px] font-semibold text-wa transition-colors hover:bg-wa/20"
             >
               <WhatsAppGlyph className="h-4 w-4" />
-              {CONTACT.whatsappDisplay}
+              {SITE.whatsappDisplay}
             </a>
           </div>
 
           <div>
             <p className="font-label text-[10px] uppercase tracking-[0.22em] text-fg/50">
-              Navegação
+              {t("footer.nav")}
             </p>
             <ul className="mt-5 space-y-3">
-              {NAV.map((n) => (
+              {NAV_ITEMS.map((n) => (
                 <li key={n.to}>
                   <Link
                     to={n.to}
                     className="group inline-flex items-center gap-1.5 text-[14px] text-muted transition-colors hover:text-fg"
                   >
-                    {n.label}
+                    {t(`nav.${n.id}`)}
                     <ArrowUpRight className="h-3 w-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                   </Link>
                 </li>
@@ -48,16 +52,16 @@ export function Footer() {
 
           <div>
             <p className="font-label text-[10px] uppercase tracking-[0.22em] text-fg/50">
-              Projetos
+              {t("footer.projects")}
             </p>
             <ul className="mt-5 space-y-3">
-              {PROJECT_TYPES.map((t) => (
-                <li key={t.title}>
+              {types.map((type) => (
+                <li key={type.id}>
                   <Link
                     to="/servicos#tipos"
                     className="text-[14px] text-muted transition-colors hover:text-fg"
                   >
-                    {t.title}
+                    {type.title}
                   </Link>
                 </li>
               ))}
@@ -66,24 +70,24 @@ export function Footer() {
 
           <div>
             <p className="font-label text-[10px] uppercase tracking-[0.22em] text-fg/50">
-              Contato
+              {t("footer.contact")}
             </p>
             <ul className="mt-5 space-y-4 text-[14px] text-muted">
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
-                <span className="break-all">{CONTACT.email}</span>
+                <span className="break-all">{SITE.email}</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
-                <span>{CONTACT.address}</span>
+                <span>{t("contact.address")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Globe className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
-                <span>{CONTACT.coverage}</span>
+                <span>{t("contact.coverage")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
-                <span className="whitespace-pre-line">{CONTACT.hours}</span>
+                <span className="whitespace-pre-line">{t("contact.hours")}</span>
               </li>
             </ul>
           </div>
@@ -91,10 +95,10 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-line pt-7 sm:flex-row sm:items-center">
           <p className="font-label text-[10.5px] uppercase tracking-[0.14em] text-muted/70">
-            © {new Date().getFullYear()} {BRAND.full}
+            © {new Date().getFullYear()} {SITE.name}
           </p>
           <p className="font-label text-[10.5px] uppercase tracking-[0.14em] text-muted/70">
-            Feito com atenção a cada detalhe
+            {t("footer.credit")}
           </p>
         </div>
       </div>

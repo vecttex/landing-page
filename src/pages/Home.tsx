@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button, Eyebrow, GlowOrb, Reveal, Section, SectionHeading } from "../components/ui";
 import { BrowserMockup, PhoneSiteMockup } from "../components/Mockups";
 import {
@@ -10,19 +11,15 @@ import {
   TrustStrip,
   TypesGrid,
 } from "../components/sections";
-import {
-  BRAND,
-  HERO,
-  STATS,
-  HOME_ABOUT,
-  HOME_SERVICES,
-  HOME_TYPES,
-  HOME_PROCESS,
-} from "../content";
+import { RichText } from "../components/RichText";
+import { SITE, TEAM_PHOTO } from "../config/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Home() {
+  const { t } = useTranslation();
+  const stats = t("home.stats", { returnObjects: true });
+
   return (
     <>
       {/* ------------------------------- HERO ------------------------------- */}
@@ -40,9 +37,9 @@ export default function Home() {
             >
               <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 py-1.5 pl-1.5 pr-4 backdrop-blur">
                 <span className="flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 font-label text-[9px] font-semibold uppercase tracking-[0.14em] text-[#111111]">
-                  <Star className="h-2.5 w-2.5 fill-current" /> {BRAND.name}
+                  <Star className="h-2.5 w-2.5 fill-current" /> {SITE.name}
                 </span>
-                <span className="text-[12.5px] text-fg/75">{HERO.badge}</span>
+                <span className="text-[12.5px] text-fg/75">{t("home.hero.badge")}</span>
               </span>
             </motion.div>
 
@@ -52,11 +49,7 @@ export default function Home() {
               transition={{ duration: 0.85, delay: 0.1, ease }}
               className="mt-8 font-display text-[clamp(2.6rem,6.6vw,4.75rem)] font-semibold leading-[0.96] tracking-[-0.042em]"
             >
-              Sites e aplicativos
-              <br />
-              prontos para
-              <br />
-              <span className="text-gradient">a sua empresa</span>
+              <RichText k="home.hero.title" />
             </motion.h1>
 
             <motion.p
@@ -65,7 +58,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.22, ease }}
               className="mt-7 max-w-xl text-[16px] leading-relaxed text-muted md:text-[17.5px]"
             >
-              {HERO.lead}
+              {t("home.hero.lead")}
             </motion.p>
 
             <motion.div
@@ -75,7 +68,7 @@ export default function Home() {
               className="mt-10 flex flex-col gap-3 sm:flex-row"
             >
               <Button to="/servicos" variant="ghost">
-                Ver nossos serviços
+                {t("home.hero.cta")}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </motion.div>
@@ -86,7 +79,7 @@ export default function Home() {
               transition={{ duration: 0.9, delay: 0.5 }}
               className="mt-12 grid max-w-lg grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4"
             >
-              {STATS.map((s) => (
+              {stats.map((s) => (
                 <div key={s.label}>
                   <p className="font-display text-[26px] font-semibold leading-none tracking-[-0.03em] text-fg">
                     {s.value}
@@ -133,8 +126,8 @@ export default function Home() {
             <div className="relative">
               <div className="overflow-hidden rounded-[24px] border border-line">
                 <img
-                  src="/img/equipe.jpg"
-                  alt="Equipe da Vecttex trabalhando em um projeto"
+                  src={TEAM_PHOTO}
+                  alt={t("common.teamPhotoAlt")}
                   className="h-[420px] w-full object-cover opacity-75 grayscale-[35%] transition-all duration-700 hover:opacity-95 hover:grayscale-0"
                 />
               </div>
@@ -144,21 +137,14 @@ export default function Home() {
 
           <div>
             <SectionHeading
-              eyebrow={HOME_ABOUT.eyebrow}
-              title={
-                <>
-                  Uma equipe focada em
-                  <br className="hidden md:block" /> fazer sua empresa
-                  <br className="hidden md:block" />
-                  <span className="text-gradient">parecer o que ela é.</span>
-                </>
-              }
-              lead={HOME_ABOUT.lead}
+              eyebrow={t("home.about.eyebrow")}
+              title={<RichText k="home.about.title" />}
+              lead={t("home.about.lead")}
             />
             <Reveal delay={0.22}>
               <div className="mt-9">
                 <Button to="/sobre">
-                  Conhecer a Vecttex
+                  {t("home.about.cta")}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
               </div>
@@ -171,21 +157,16 @@ export default function Home() {
       <Section id="servicos" className="border-t border-line bg-ink-2/40">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow={HOME_SERVICES.eyebrow}
-            title={
-              <>
-                O que entregamos
-                <br /> em cada projeto.
-              </>
-            }
-            lead={HOME_SERVICES.lead}
+            eyebrow={t("home.services.eyebrow")}
+            title={<RichText k="home.services.title" />}
+            lead={t("home.services.lead")}
           />
           <Reveal delay={0.1}>
             <Link
               to="/servicos"
               className="group inline-flex shrink-0 items-center gap-2 text-[13.5px] font-semibold text-fg"
             >
-              Ver todos os serviços
+              {t("home.services.link")}
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-2/70 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-[#111111]">
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
@@ -201,21 +182,16 @@ export default function Home() {
       <Section>
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow={HOME_TYPES.eyebrow}
-            title={
-              <>
-                Escolha o formato
-                <br className="hidden sm:block" /> certo para o seu objetivo.
-              </>
-            }
-            lead={HOME_TYPES.lead}
+            eyebrow={t("home.types.eyebrow")}
+            title={<RichText k="home.types.title" />}
+            lead={t("home.types.lead")}
           />
           <Reveal delay={0.1}>
             <Link
               to="/servicos#tipos"
               className="group inline-flex shrink-0 items-center gap-2 text-[13.5px] font-semibold text-fg"
             >
-              Ver todos os formatos
+              {t("home.types.link")}
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-2/70 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-[#111111]">
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
@@ -231,16 +207,15 @@ export default function Home() {
       <Section className="border-t border-line bg-ink-2/40">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <Eyebrow>{HOME_PROCESS.eyebrow}</Eyebrow>
+            <Eyebrow>{t("home.process.eyebrow")}</Eyebrow>
             <h2 className="mt-5 font-display text-[clamp(1.9rem,4.6vw,3.35rem)] font-semibold leading-[1.03] tracking-[-0.03em]">
-              Um processo
-              <br /> <span className="text-gradient">sem surpresas.</span>
+              <RichText k="home.process.title" />
             </h2>
             <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-muted">
-              {HOME_PROCESS.lead}
+              {t("home.process.lead")}
             </p>
             <Button to="/servicos#processo" variant="ghost" className="mt-8">
-              Ver processo completo
+              {t("home.process.cta")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>

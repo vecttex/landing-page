@@ -1,36 +1,35 @@
+import { useTranslation } from "react-i18next";
 import { Reveal, Section, SectionHeading, GlowOrb, Eyebrow } from "../components/ui";
 import { CTASection, PageHero, LinkCard, WhatsAppSupport } from "../components/sections";
 import { BrowserMockup } from "../components/Mockups";
+import { RichText } from "../components/RichText";
 import { Icon } from "../components/Icon";
-import { SOBRE_HERO, MANIFESTO, PRINCIPLES } from "../content";
+import { ABOUT_LINK_TO, PRINCIPLE_ICON } from "../config/site";
 
 export default function Sobre() {
+  const { t } = useTranslation();
+  const paragraphs = t("about.manifesto.paragraphs", { returnObjects: true });
+  const principles = t("about.principles.items", { returnObjects: true });
+  const links = t("about.links", { returnObjects: true });
+
   return (
     <>
       <PageHero
-        eyebrow={SOBRE_HERO.eyebrow}
-        title={
-          <>
-            Somos a equipe por trás dos{" "}
-            <span className="text-gradient">sites que apresentam</span> o seu
-            negócio.
-          </>
-        }
-        lead={SOBRE_HERO.lead}
+        eyebrow={t("about.hero.eyebrow")}
+        title={<RichText k="about.hero.title" />}
+        lead={t("about.hero.lead")}
       />
 
       {/* ----------------------------- MANIFESTO ---------------------------- */}
       <Section>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <Eyebrow>Nossa forma de trabalhar</Eyebrow>
+            <Eyebrow>{t("about.manifesto.eyebrow")}</Eyebrow>
             <h2 className="mt-5 font-display text-[clamp(1.8rem,4.2vw,2.9rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
-              Um site não é só uma página.
-              <br />
-              <span className="text-gradient">É a primeira impressão.</span>
+              <RichText k="about.manifesto.title" />
             </h2>
             <div className="mt-7 space-y-5 text-[15.5px] leading-relaxed text-muted">
-              {MANIFESTO.map((p) => (
+              {paragraphs.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
@@ -40,23 +39,23 @@ export default function Sobre() {
             <div className="relative">
               <GlowOrb className="-right-20 -top-20" size={420} color="rgba(255,138,0,0.18)" />
               <div className="relative rotate-[1.5deg]">
-                <BrowserMockup url="vecttex.com.br/seu-projeto" />
+                <BrowserMockup url={t("mockups.projectUrl")} />
               </div>
               <div className="relative mt-6 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl border border-line bg-surface/50 p-5">
                   <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-accent">
-                    Web
+                    {t("about.devices.web.label")}
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-snug text-muted">
-                    Layout amplo e bem estruturado
+                    {t("about.devices.web.desc")}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-line bg-surface/50 p-5">
                   <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-ember">
-                    Mobile
+                    {t("about.devices.mobile.label")}
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-snug text-muted">
-                    Perfeito na tela do celular
+                    {t("about.devices.mobile.desc")}
                   </p>
                 </div>
               </div>
@@ -69,16 +68,16 @@ export default function Sobre() {
       <Section className="border-t border-line bg-ink-2/40">
         <SectionHeading
           align="center"
-          eyebrow="Nossos princípios"
-          title="O que orienta cada projeto"
-          lead="Quatro compromissos que aplicamos em todos os trabalhos, independentemente do tamanho da empresa."
+          eyebrow={t("about.principles.eyebrow")}
+          title={t("about.principles.title")}
+          lead={t("about.principles.lead")}
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PRINCIPLES.map((v, i) => (
-            <Reveal key={v.title} delay={(i % 4) * 0.08}>
+          {principles.map((v, i) => (
+            <Reveal key={v.id} delay={(i % 4) * 0.08}>
               <div className="group h-full rounded-2xl border border-line bg-surface/45 p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line-2/60 bg-gradient-to-br from-white/[0.07] to-transparent transition-all duration-500 group-hover:border-accent/50 group-hover:from-accent/20">
-                  <Icon name={v.icon} className="h-5 w-5 text-accent-2" strokeWidth={1.7} />
+                  <Icon name={PRINCIPLE_ICON[v.id]} className="h-5 w-5 text-accent-2" strokeWidth={1.7} />
                 </span>
                 <h3 className="mt-6 font-display text-[19px] font-semibold tracking-[-0.02em]">
                   {v.title}
@@ -97,30 +96,16 @@ export default function Sobre() {
       {/* ------------------------------- LINKS ------------------------------ */}
       <Section className="pt-0">
         <div className="grid gap-5 md:grid-cols-3">
-          <Reveal>
-            <LinkCard
-              to="/servicos"
-              label="Serviços"
-              title="O que fazemos"
-              desc="O que está incluso em cada projeto e os formatos que desenvolvemos."
-            />
-          </Reveal>
-          <Reveal delay={0.08}>
-            <LinkCard
-              to="/servicos#processo"
-              label="Processo"
-              title="Como trabalhamos"
-              desc="As cinco etapas do projeto, do primeiro contato até a entrega."
-            />
-          </Reveal>
-          <Reveal delay={0.16}>
-            <LinkCard
-              to="/contato"
-              label="Contato"
-              title="Fale com a gente"
-              desc="Conte o que você precisa e receba um retorno da nossa equipe pelo WhatsApp."
-            />
-          </Reveal>
+          {links.map((link, i) => (
+            <Reveal key={link.id} delay={i * 0.08}>
+              <LinkCard
+                to={ABOUT_LINK_TO[link.id]}
+                label={link.label}
+                title={link.title}
+                desc={link.desc}
+              />
+            </Reveal>
+          ))}
         </div>
       </Section>
 

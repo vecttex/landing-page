@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { waLink } from "../content";
+import { useTranslation } from "react-i18next";
+import { waLink } from "../config/site";
 
 function WhatsAppGlyph({ className = "h-6 w-6" }: { className?: string }) {
   return (
@@ -15,8 +16,10 @@ function WhatsAppGlyph({ className = "h-6 w-6" }: { className?: string }) {
 }
 
 export function WhatsAppFab() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const href = waLink(t("contact.defaultMessage"));
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 900);
@@ -42,7 +45,7 @@ export function WhatsAppFab() {
           >
             <button
               onClick={() => setOpen(false)}
-              aria-label="Fechar"
+              aria-label={t("common.closeAria")}
               className="absolute right-2.5 top-2.5 text-muted transition-colors hover:text-fg"
             >
               <X className="h-3.5 w-3.5" />
@@ -53,30 +56,30 @@ export function WhatsAppFab() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-wa" />
               </span>
               <span className="font-label text-[9px] uppercase tracking-[0.18em] text-wa">
-                Atendimento on-line
+                {t("fab.status")}
               </span>
             </div>
             <p className="mt-2 text-[13px] leading-snug text-fg/90">
-              Tire suas dúvidas agora com a nossa equipe pelo WhatsApp.
+              {t("fab.lead")}
             </p>
             <a
-              href={waLink()}
+              href={href}
               target="_blank"
               rel="noreferrer"
               className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-wa px-3 py-2 text-[12.5px] font-semibold text-[#04240f] transition hover:brightness-110"
             >
               <WhatsAppGlyph className="h-4 w-4" />
-              Iniciar conversa
+              {t("fab.action")}
             </a>
           </motion.div>
         )}
       </AnimatePresence>
 
       <motion.a
-        href={waLink()}
+        href={href}
         target="_blank"
         rel="noreferrer"
-        aria-label="Falar no WhatsApp"
+        aria-label={t("common.whatsappAria")}
         initial={{ opacity: 0, scale: 0.6 }}
         animate={visible ? { opacity: 1, scale: 1 } : {}}
         transition={{ type: "spring", stiffness: 260, damping: 18 }}
