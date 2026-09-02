@@ -45,7 +45,7 @@ export default function Sobre() {
               <div className="relative mt-6 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl border border-line bg-surface/50 p-5">
                   <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-accent">
-                    Desktop
+                    Web
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-snug text-muted">
                     Layout amplo e bem estruturado
