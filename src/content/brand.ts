@@ -21,7 +21,7 @@ export const CONTACT = {
   email: "contato@vecttex.com.br",
   address: "Gravataí/RS",
   coverage: "Atendimento on-line para todo o Brasil",
-  hours: "· Segunda a sexta das 09:00 às 19:00 · Sábado das 09:00 às 13:00",
+  hours: "· Segunda a sexta das 09:00 às 19:00\n· Sábado das 09:00 às 13:00",
 };
 
 export function waLink(message?: string) {
