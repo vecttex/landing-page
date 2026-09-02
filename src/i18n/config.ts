@@ -11,6 +11,7 @@ export const DEFAULT_LOCALE = "pt-BR";
 export const LOCALES = [
   { code: "pt-BR", short: "PT", name: "Português (BR)" },
   { code: "en-US", short: "EN", name: "English (US)" },
+  { code: "es-ES", short: "ES", name: "Español (ES)" },
 ] as const;
 
 export type Locale = (typeof LOCALES)[number]["code"];

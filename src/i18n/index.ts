@@ -12,6 +12,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import { ptBR } from "./resources/pt-BR";
 import { enUS } from "./resources/en-US";
+import { esES } from "./resources/es-ES";
 import {
   DEFAULT_LOCALE,
   LOCALE_CODES,
@@ -23,6 +24,7 @@ import {
 const bundles = {
   "pt-BR": ptBR,
   "en-US": enUS,
+  "es-ES": esES,
 };
 
 if (import.meta.env.DEV) {
@@ -39,6 +41,7 @@ i18n
     resources: {
       "pt-BR": { translation: bundles["pt-BR"] },
       "en-US": { translation: bundles["en-US"] },
+      "es-ES": { translation: bundles["es-ES"] },
     },
     /* Idioma padrão e destino de qualquer chave que falte em outro idioma. */
     fallbackLng: DEFAULT_LOCALE,
