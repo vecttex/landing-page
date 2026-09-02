@@ -5,7 +5,7 @@
 
 export const SOBRE_HERO = {
   eyebrow: "Sobre nós",
-  lead: "A Vecttex é uma empresa de tecnologia de Gravataí (RS) dedicada a negócios que querem uma presença digital à altura do que oferecem no mundo real — websites, aplicações mobile e soluções digitais para empresas.",
+  lead: "A Vecttex é uma empresa de tecnologia dedicada a negócios que querem uma presença digital à altura do que oferecem no mundo real — websites, aplicações mobile e soluções digitais para empresas.",
 };
 
 export const MANIFESTO = [
