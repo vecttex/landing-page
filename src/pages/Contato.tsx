@@ -228,7 +228,7 @@ export default function Contato() {
                     <p className="font-label text-[9px] uppercase tracking-[0.2em] text-muted">
                       {c.label}
                     </p>
-                    <p className="mt-1.5 break-words text-[14.5px] text-fg/90">
+                    <p className="mt-1.5 break-words whitespace-pre-line text-[14.5px] text-fg/90">
                       {c.value}
                     </p>
                   </div>

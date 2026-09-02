@@ -83,7 +83,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
-                <span>{CONTACT.hours}</span>
+                <span className="whitespace-pre-line">{CONTACT.hours}</span>
               </li>
             </ul>
           </div>

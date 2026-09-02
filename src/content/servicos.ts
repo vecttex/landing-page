@@ -68,7 +68,7 @@ export const PROJECT_TYPES = [
     points: ["Galerias organizadas", "Páginas de projeto", "Visual editorial"],
   },
   {
-    title: "Catálogo online",
+    title: "Catálogo on-line",
     tag: "Produtos",
     desc: "Seus produtos e serviços organizados por categoria, com pedido ou orçamento direto pelo WhatsApp.",
     image: "/img/tipo-catalogo.jpg",

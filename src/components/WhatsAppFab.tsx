@@ -53,7 +53,7 @@ export function WhatsAppFab() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-wa" />
               </span>
               <span className="font-label text-[9px] uppercase tracking-[0.18em] text-wa">
-                Atendimento online
+                Atendimento on-line
               </span>
             </div>
             <p className="mt-2 text-[13px] leading-snug text-fg/90">

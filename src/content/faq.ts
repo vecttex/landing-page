@@ -6,7 +6,7 @@
 export const FAQ = [
   {
     q: "Vocês fazem apenas sites de apresentação?",
-    a: "Não. Sites de apresentação são uma parte do que fazemos. Também desenvolvemos sites institucionais, landing pages, portfólios, catálogos online e projetos personalizados conforme a necessidade.",
+    a: "Não. Sites de apresentação são uma parte do que fazemos. Também desenvolvemos sites institucionais, landing pages, portfólios, catálogos on-line e projetos personalizados conforme a necessidade.",
   },
   {
     q: "Como funciona o suporte?",

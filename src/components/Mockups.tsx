@@ -180,7 +180,7 @@ export function ChatMockup({ className = "" }: { className?: string }) {
           </div>
           <div className="leading-tight">
             <p className="text-[11px] font-semibold text-fg">{BRAND.name} · Atendimento</p>
-            <p className="font-label text-[8px] uppercase tracking-[0.14em] text-wa">online agora</p>
+            <p className="font-label text-[8px] uppercase tracking-[0.14em] text-wa">on-line agora</p>
           </div>
         </div>
 

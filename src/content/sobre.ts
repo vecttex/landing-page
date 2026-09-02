@@ -10,7 +10,7 @@ export const SOBRE_HERO = {
 
 export const MANIFESTO = [
   "Muitos negócios excelentes ainda são julgados por uma presença digital que não corresponde à qualidade do que entregam. Nosso trabalho é corrigir esse desencontro.",
-  "Cada projeto é construído em cima do objetivo do cliente — seja um site institucional, uma landing page, um catálogo online ou algo fora do padrão. O formato e o nível de personalização são definidos junto com você, de acordo com o que o projeto pede.",
+  "Cada projeto é construído em cima do objetivo do cliente — seja um site institucional, uma landing page, um catálogo on-line ou algo fora do padrão. O formato e o nível de personalização são definidos junto com você, de acordo com o que o projeto pede.",
 ];
 
 export const PRINCIPLES = [
