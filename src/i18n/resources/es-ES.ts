@@ -249,8 +249,8 @@ export const esES: Resources = {
     lead: "Una conversación rápida por WhatsApp es suficiente para entender tu proyecto, sin compromiso.",
   },
   mockups: {
-    browserUrl: "tuempresa.com",
-    projectUrl: "vecttex.com.br/tu-proyecto",
+    browserUrl: "tuempresa.vecttex.com.br",
+    projectUrl: "tuempresa.vecttex.com.br",
     chat: {
       title: "{{brand}} · Atención",
       status: "en línea ahora",

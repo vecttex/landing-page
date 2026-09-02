@@ -85,7 +85,7 @@ export const ptBR = {
   /* ------------------------------------------------------------------ */
   home: {
     hero: {
-      badge: "Websites, aplicativos e soluções para empresas",
+      badge: "Sites, aplicativos e soluções para empresas",
       title:
         "Sites e aplicativos<br/>prontos para<br/><accent>a sua empresa</accent>",
       lead: "Desenvolvemos sites e aplicativos alinhados ao seu negócio — com atendimento direto no WhatsApp, do primeiro contato à entrega.",
@@ -578,8 +578,8 @@ export const ptBR = {
 
   /* Textos que aparecem dentro das ilustrações de navegador e celular. */
   mockups: {
-    browserUrl: "suaempresa.com.br",
-    projectUrl: "vecttex.com.br/seu-projeto",
+    browserUrl: "suaempresa.vecttex.com.br",
+    projectUrl: "suaempresa.vecttex.com.br",
     chat: {
       title: "{{brand}} · Atendimento",
       status: "on-line agora",

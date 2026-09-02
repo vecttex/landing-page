@@ -545,8 +545,8 @@ export const enUS: Resources = {
   },
 
   mockups: {
-    browserUrl: "yourcompany.com",
-    projectUrl: "vecttex.com.br/your-project",
+    browserUrl: "yourcompany.vecttex.com.br",
+    projectUrl: "yourcompany.vecttex.com.br",
     chat: {
       title: "{{brand}} · Support",
       status: "online now",
