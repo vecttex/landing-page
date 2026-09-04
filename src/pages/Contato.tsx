@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Globe, Clock, Send, CheckCircle2, ChevronDown } from "lucide-react";
+import { Mail, MapPin, Globe, Clock, Send, CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Reveal, Section, GlowOrb, Eyebrow } from "../components/ui";
 import { PageHero } from "../components/sections";
 import { RichText } from "../components/RichText";
+import { Select } from "../components/Select";
 import { WhatsAppGlyph } from "../components/WhatsAppFab";
 import { SITE, waLink } from "../config/site";
 
@@ -20,6 +21,13 @@ const UNKNOWN_TYPE = "unknown";
 export default function Contato() {
   const { t } = useTranslation();
   const types = t("services.types.items", { returnObjects: true });
+
+  /* Formatos do catálogo + a saída "ainda não sei", na ordem em que aparecem
+     na lista. Recalculado a cada render para acompanhar a troca de idioma. */
+  const typeOptions = [
+    ...types.map((type) => ({ value: type.id, label: type.title })),
+    { value: UNKNOWN_TYPE, label: t("contactPage.form.typeUnknown") },
+  ];
 
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({
@@ -126,27 +134,16 @@ export default function Contato() {
                       />
                     </div>
                     <div>
-                      <label className={labelCls} htmlFor="tipo">
+                      <label className={labelCls} id="tipo-label" htmlFor="tipo">
                         {t("contactPage.form.typeLabel")}
                       </label>
-                      <div className="relative">
-                        <select
-                          id="tipo"
-                          value={form.tipo}
-                          onChange={(e) => update("tipo", e.target.value)}
-                          className={`${inputCls} appearance-none pr-10`}
-                        >
-                          {types.map((type) => (
-                            <option key={type.id} value={type.id} className="bg-ink-2">
-                              {type.title}
-                            </option>
-                          ))}
-                          <option value={UNKNOWN_TYPE} className="bg-ink-2">
-                            {t("contactPage.form.typeUnknown")}
-                          </option>
-                        </select>
-                        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-                      </div>
+                      <Select
+                        id="tipo"
+                        labelledBy="tipo-label"
+                        value={form.tipo}
+                        onChange={(v) => update("tipo", v)}
+                        options={typeOptions}
+                      />
                     </div>
                   </div>
 
