@@ -11,7 +11,7 @@ export default function NotFound() {
       <div className="grid-lines absolute inset-0 opacity-50 mask-fade-b" />
       <GlowOrb className="-left-40 top-0" size={600} />
       <div className="relative mx-auto w-full max-w-[1200px] py-24 text-center">
-        <p className="font-label text-[11px] uppercase tracking-[0.3em] text-accent-2">
+        <p className="font-label text-[11px] uppercase tracking-[0.3em] text-gold-soft">
           {t("notFound.code")}
         </p>
         <h1 className="mt-6 font-display text-[clamp(3rem,12vw,7rem)] font-semibold leading-none tracking-[-0.05em]">

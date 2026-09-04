@@ -51,6 +51,9 @@ export const enUS: Resources = {
     openMenuAria: "Open menu",
     closeAria: "Close",
     whatsappAria: "Chat on WhatsApp",
+    themeSwitchLabel: "Light theme",
+    switchToLight: "Switch to light theme",
+    switchToDark: "Switch to dark theme",
     teamPhotoAlt: "The Vecttex team working on a project",
   },
 

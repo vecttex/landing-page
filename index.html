@@ -11,6 +11,29 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#111111" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var theme = "dark";
+        try {
+          var query = new URLSearchParams(window.location.search).get("theme");
+          var saved = query || window.localStorage.getItem("vecttex:theme");
+          if (saved === "light" || saved === "dark") {
+            theme = saved;
+          } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            theme = "light";
+          }
+        } catch (e) {
+          /* localStorage indisponível: fica o padrão institucional. */
+        }
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+        if (theme === "light") {
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.content = "#f8f5ee";
+        }
+      })();
+    </script>
 
     <title>Vecttex — Sites e aplicativos profissionais para empresas</title>
     <meta

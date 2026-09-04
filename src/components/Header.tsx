@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { NAV_ITEMS } from "../config/site";
 import { Logo } from "./Logo";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   const { t } = useTranslation();
@@ -57,7 +58,7 @@ export function Header() {
                     {isActive && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full border border-line bg-white/[0.04]"
+                        className="absolute inset-0 rounded-full border border-line bg-raise-2"
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     )}
@@ -69,22 +70,19 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2.5">
-            {/* No celular o seletor vive dentro do menu, junto com a
-                navegação — aqui ele apareceria espremido ao lado do burger. */}
             <LocaleSwitcher className="hidden sm:inline-flex" />
-            {/* CTA neutro: o contato por WhatsApp fica a cargo do botão
-                flutuante, presente em todas as páginas. */}
+            <ThemeToggle className="hidden sm:inline-flex" />
             <Link
               to="/contato"
-              className="hidden items-center gap-2 rounded-full border border-line-2/70 bg-white/[0.02] px-5 py-2.5 text-[13px] font-semibold text-fg transition-all duration-300 hover:border-accent/60 hover:bg-accent/[0.07] hover:-translate-y-0.5 sm:flex"
+              className="hidden items-center gap-2 rounded-full border border-line-2/70 bg-raise px-5 py-2.5 text-[13px] font-semibold text-fg transition-all duration-300 hover:border-accent/60 hover:bg-accent/[0.07] hover:-translate-y-0.5 sm:flex"
             >
               {t("common.requestQuote")}
-              <ArrowUpRight className="h-3.5 w-3.5 text-accent" />
+              <ArrowUpRight className="h-3.5 w-3.5 text-gold-text" />
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label={t("common.openMenuAria")}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/[0.03] text-fg transition-colors hover:border-accent/60 lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-raise text-fg transition-colors hover:border-accent/60 lg:hidden"
             >
               {open ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
             </button>
@@ -133,10 +131,13 @@ export function Header() {
                 transition={{ delay: 0.35 }}
                 className="space-y-5"
               >
-                <LocaleSwitcher />
+                <div className="flex items-center gap-2.5">
+                  <LocaleSwitcher />
+                  <ThemeToggle />
+                </div>
                 <Link
                   to="/contato"
-                  className="flex items-center justify-center gap-2.5 rounded-2xl bg-accent px-6 py-4 text-[15px] font-semibold text-[#111111]"
+                  className="flex items-center justify-center gap-2.5 rounded-2xl bg-accent px-6 py-4 text-[15px] font-semibold text-on-accent"
                 >
                   {t("common.requestQuote")}
                   <ArrowUpRight className="h-4 w-4" />

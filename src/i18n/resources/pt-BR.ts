@@ -49,6 +49,12 @@ export const ptBR = {
     openMenuAria: "Abrir menu",
     closeAria: "Fechar",
     whatsappAria: "Falar no WhatsApp",
+    /* O interruptor de tema é um liga/desliga: o nome acessível é fixo e
+       quem informa a situação é o `aria-checked`. As duas frases abaixo são
+       a dica do mouse, onde o que interessa é o destino do clique. */
+    themeSwitchLabel: "Tema claro",
+    switchToLight: "Mudar para o tema claro",
+    switchToDark: "Mudar para o tema escuro",
     teamPhotoAlt: "Equipe da Vecttex trabalhando em um projeto",
   },
 

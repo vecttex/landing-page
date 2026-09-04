@@ -24,7 +24,7 @@ export function Footer() {
               href={waLink(t("contact.defaultMessage"))}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-wa/30 bg-wa/10 px-4 py-2.5 text-[13px] font-semibold text-wa transition-colors hover:bg-wa/20"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-wa/30 bg-wa/10 px-4 py-2.5 text-[13px] font-semibold text-wa-text transition-colors hover:bg-wa/20"
             >
               <WhatsAppGlyph className="h-4 w-4" />
               {SITE.whatsappDisplay}
@@ -32,7 +32,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-label text-[10px] uppercase tracking-[0.22em] text-fg/50">
+            <p className="font-label text-[10px] uppercase tracking-[0.22em] text-muted">
               {t("footer.nav")}
             </p>
             <ul className="mt-5 space-y-3">
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-label text-[10px] uppercase tracking-[0.22em] text-fg/50">
+            <p className="font-label text-[10px] uppercase tracking-[0.22em] text-muted">
               {t("footer.projects")}
             </p>
             <ul className="mt-5 space-y-3">
@@ -69,24 +69,24 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-label text-[10px] uppercase tracking-[0.22em] text-fg/50">
+            <p className="font-label text-[10px] uppercase tracking-[0.22em] text-muted">
               {t("footer.contact")}
             </p>
             <ul className="mt-5 space-y-4 text-[14px] text-muted">
               <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-text" strokeWidth={1.7} />
                 <span className="break-all">{SITE.email}</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-text" strokeWidth={1.7} />
                 <span>{t("contact.address")}</span>
               </li>
               <li className="flex items-start gap-3">
-                <Globe className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
+                <Globe className="mt-0.5 h-4 w-4 shrink-0 text-gold-text" strokeWidth={1.7} />
                 <span>{t("contact.coverage")}</span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.7} />
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold-text" strokeWidth={1.7} />
                 <span className="whitespace-pre-line">{t("contact.hours")}</span>
               </li>
             </ul>
@@ -94,10 +94,10 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-line pt-7 sm:flex-row sm:items-center">
-          <p className="font-label text-[10.5px] uppercase tracking-[0.14em] text-muted/70">
+          <p className="font-label text-[10.5px] uppercase tracking-[0.14em] text-muted">
             © {new Date().getFullYear()} {SITE.name}
           </p>
-          <p className="font-label text-[10.5px] uppercase tracking-[0.14em] text-muted/70">
+          <p className="font-label text-[10.5px] uppercase tracking-[0.14em] text-muted">
             {t("footer.credit")}
           </p>
         </div>

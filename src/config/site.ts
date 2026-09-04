@@ -16,8 +16,10 @@ export const SITE = {
   whatsappNumber: "5551981061315",
   whatsappDisplay: "+55 (51) 98106-1315",
   email: "contato@vecttex.com.br",
-  /* Logotipo é lettering exclusivo e nunca é redigitado — vem do kit. */
-  wordmark: "/brand/logotipo-branco-ouro.svg",
+  wordmark: {
+    dark: "/brand/logotipo-branco-ouro.svg",
+    light: "/brand/logotipo-tinta-ouro.svg",
+  },
 } as const;
 
 export function waLink(message: string) {

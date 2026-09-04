@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* ------------------------------------------------------------------ *
- *  Identidade Vecttex — Manual de Marca v1.1 (Agosto de 2026)
- *  Ouro é a assinatura da marca e nunca deve ser substituído.
- *  Vecttex Ink (#111111) é o fundo institucional.
- * ------------------------------------------------------------------ */
 
 @theme {
   /* Neutros — rampa a partir do Vecttex Ink */
@@ -12,16 +7,48 @@
   --color-ink-2: #161617;
   --color-surface: #1b1b1d;
   --color-surface-2: #232326;
+  --color-deep: #0c0c0c;     /* fundo do "site dentro do mockup" */
   --color-line: #2c2c30;
   --color-line-2: #3c3c41;
   --color-fg: #ffffff;       /* Pure White — texto principal */
   --color-muted: #9a9a9f;    /* derivado do cinza institucional #8A8A8A */
 
+  /* Véus sobre o fundo — o que antes era `bg-white/[0.0x]` solto */
+  --color-raise: rgba(255, 255, 255, 0.03);
+  --color-raise-2: rgba(255, 255, 255, 0.07);
+  --color-hair: rgba(255, 255, 255, 0.12);
+
+  /* Cinco níveis de "barra de conteúdo" dos mockups, do mais forte ao
+     mais discreto. Sem isto cada mockup fixaria a própria opacidade de
+     branco e ficaria invisível no tema claro. */
+  --color-fill-1: rgba(255, 255, 255, 0.24);
+  --color-fill-2: rgba(255, 255, 255, 0.16);
+  --color-fill-3: rgba(255, 255, 255, 0.1);
+  --color-fill-4: rgba(255, 255, 255, 0.06);
+  --color-fill-5: rgba(255, 255, 255, 0.03);
+
   /* Ouro — paleta primária */
-  --color-accent: #ffb000;   /* Vecttex Gold */
+  --color-accent: #ffb000;   /* Vecttex Gold — preenchimento, nunca muda */
   --color-accent-2: #ffd166; /* Light Gold */
   --color-ember: #ff8a00;    /* Deep Amber */
+  --color-gold-text: #ffb000;/* ouro legível: texto e traços */
+  --color-gold-soft: #ffd166;/* ouro legível: rótulos e ícones de apoio */
+  --color-ember-text: #ff8a00;
+  --color-on-accent: #111111;/* texto sobre ouro chapado */
+
+  /* WhatsApp */
   --color-wa: #25d366;
+  --color-wa-text: #25d366;
+  --color-on-wa: #04240f;
+  --color-wa-panel: #12181a; /* cabeçalho e barra de digitação */
+  --color-wa-canvas: #0a0f10;/* fundo da conversa */
+  --color-wa-in: #1b2124;    /* balão recebido */
+  --color-wa-out: #12503a;   /* balão enviado */
+  --color-wa-out-fg: #e9fff3;
+  --color-wa-field: #1e2528;
+  --color-wa-meta: rgba(255, 255, 255, 0.4);
+  --color-wa-dot: rgba(255, 255, 255, 0.45);
+  --color-wa-tick: #53bdeb;
 
   --font-display: "Exo 2", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
@@ -32,6 +59,117 @@
   --animate-pulse-ring: pulsering 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-blink: blink 1.1s steps(2, start) infinite;
   --animate-shimmer: shimmer 2.6s linear infinite;
+}
+
+:root {
+  color-scheme: dark;
+
+  --vt-grid-line: rgba(255, 255, 255, 0.035);
+  --vt-dot: rgba(255, 255, 255, 0.16);
+  --vt-hairline: rgba(255, 255, 255, 0.07);
+  --vt-grain-opacity: 0.5;
+  --vt-grain-blend: overlay;
+  --vt-glass-from: rgba(255, 255, 255, 0.045);
+  --vt-glass-to: rgba(255, 255, 255, 0.012);
+  --vt-stripe: rgba(255, 176, 0, 0.22);
+
+  --vt-btn-glow: 0 10px 40px -12px rgba(255, 176, 0, 0.7);
+  --vt-wa-glow: 0 12px 44px -10px rgba(37, 211, 102, 0.6);
+  --vt-shadow-window: 0 50px 110px -40px rgba(0, 0, 0, 0.95);
+  --vt-shadow-phone: 0 45px 90px -35px rgba(0, 0, 0, 0.95);
+  --vt-shadow-pop: 0 30px 70px -25px rgba(0, 0, 0, 0.9);
+
+  /* Halos dourados de fundo (componente GlowOrb) */
+  --vt-orb: rgba(255, 176, 0, 0.3);
+  --vt-orb-2: rgba(255, 209, 102, 0.13);
+  --vt-orb-soft: rgba(255, 176, 0, 0.18);
+  --vt-orb-ember: rgba(255, 138, 0, 0.18);
+
+  /* Degradê oficial Vecttex: Light Gold -> Vecttex Gold -> Deep Amber */
+  --vt-text-gradient: linear-gradient(100deg, #ffd166 0%, #ffb000 45%, #ff8a00 100%);
+
+  --vt-selection-bg: #ffb000;
+  --vt-selection-fg: #111111;
+  --vt-scroll-track: #0d0d0d;
+  --vt-scroll-thumb: #35353a;
+  --vt-scroll-thumb-hover: #4a4a50;
+}
+
+/* ------------------------------------------------------------------ *
+ *  TEMA CLARO — off-white quente, alinhado ao ouro da marca.
+ *  Só reatribui tokens; nenhuma regra de layout muda aqui.
+ * ------------------------------------------------------------------ */
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-ink: #f8f5ee;
+  --color-ink-2: #f1ece1;
+  --color-surface: #ffffff;
+  --color-surface-2: #eae4d7;
+  --color-deep: #fffdf8;
+  --color-line: #e4ddce;
+  --color-line-2: #cfc5b2;
+  --color-fg: #15130f;
+  --color-muted: #6b655e;
+
+  --color-raise: rgba(21, 19, 15, 0.035);
+  --color-raise-2: rgba(21, 19, 15, 0.055);
+  --color-hair: rgba(21, 19, 15, 0.12);
+
+  --color-fill-1: rgba(21, 19, 15, 0.24);
+  --color-fill-2: rgba(21, 19, 15, 0.16);
+  --color-fill-3: rgba(21, 19, 15, 0.11);
+  --color-fill-4: rgba(21, 19, 15, 0.07);
+  --color-fill-5: rgba(21, 19, 15, 0.04);
+
+  /* O ouro de preenchimento (--color-accent) permanece #FFB000.
+     Só as versões de leitura fecham para bronze — AA sobre o off-white. */
+  --color-gold-text: #8a6410;
+  --color-gold-soft: #8a6410;
+  --color-ember-text: #a34a00;
+  --color-wa-text: #0f7a3d;
+
+  /* Conversa do mockup na paleta clara do próprio WhatsApp */
+  --color-wa-panel: #f0f2f5;
+  --color-wa-canvas: #efe7de;
+  --color-wa-in: #ffffff;
+  --color-wa-out: #d9fdd3;
+  --color-wa-out-fg: #111b21;
+  --color-wa-field: #ffffff;
+  --color-wa-meta: rgba(17, 27, 33, 0.45);
+  --color-wa-dot: rgba(17, 27, 33, 0.35);
+
+  --vt-grid-line: rgba(21, 19, 15, 0.05);
+  --vt-dot: rgba(21, 19, 15, 0.14);
+  --vt-hairline: rgba(21, 19, 15, 0.09);
+  --vt-grain-opacity: 0.22;
+  --vt-grain-blend: multiply;
+  --vt-glass-from: rgba(255, 255, 255, 0.75);
+  --vt-glass-to: rgba(255, 255, 255, 0.45);
+  --vt-stripe: rgba(255, 176, 0, 0.38);
+
+  --vt-btn-glow: 0 10px 30px -14px rgba(176, 110, 0, 0.5);
+  --vt-wa-glow: 0 12px 34px -14px rgba(15, 122, 61, 0.45);
+  --vt-shadow-window: 0 40px 90px -45px rgba(21, 19, 15, 0.4);
+  --vt-shadow-phone: 0 35px 75px -40px rgba(21, 19, 15, 0.36);
+  --vt-shadow-pop: 0 24px 55px -28px rgba(21, 19, 15, 0.3);
+
+  /* Halos bem mais discretos: sobre off-white o ouro satura rápido. */
+  --vt-orb: rgba(255, 176, 0, 0.16);
+  --vt-orb-2: rgba(255, 176, 0, 0.1);
+  --vt-orb-soft: rgba(255, 176, 0, 0.12);
+  --vt-orb-ember: rgba(255, 138, 0, 0.1);
+
+  /* Mesmo desenho do degradê oficial, um degrau abaixo em luminosidade —
+     o original reprova em contraste sobre fundo claro. */
+  --vt-text-gradient: linear-gradient(100deg, #b8830f 0%, #9a6805 45%, #ad5600 100%);
+
+  --vt-selection-bg: #ffb000;
+  --vt-selection-fg: #111111;
+  --vt-scroll-track: #efe9dc;
+  --vt-scroll-thumb: #cfc5b2;
+  --vt-scroll-thumb-hover: #b5a893;
 }
 
 @keyframes marquee {
@@ -60,6 +198,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* O preflight do Tailwind v4 deixou de forçar `cursor: pointer` em botão —
+   passou a valer o padrão do agente de usuário, que é a seta. Sem esta
+   regra nenhum dos botões do site (menu, idioma, tema, FAQ, envio do
+   formulário) mostra a mãozinha. É a correção recomendada no guia de
+   migração para a v4. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
 body {
   background-color: var(--color-ink);
   color: var(--color-fg);
@@ -70,14 +220,18 @@ body {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #111111;
+  background: var(--vt-selection-bg);
+  color: var(--vt-selection-fg);
 }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: #0d0d0d; }
-::-webkit-scrollbar-thumb { background: #35353a; border-radius: 999px; border: 2px solid #0d0d0d; }
-::-webkit-scrollbar-thumb:hover { background: #4a4a50; }
+::-webkit-scrollbar-track { background: var(--vt-scroll-track); }
+::-webkit-scrollbar-thumb {
+  background: var(--vt-scroll-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--vt-scroll-track);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--vt-scroll-thumb-hover); }
 
 /* ---------- atmosphere ---------- */
 .grain::after {
@@ -85,15 +239,15 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: overlay;
+  opacity: var(--vt-grain-opacity);
+  mix-blend-mode: var(--vt-grain-blend);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
 
 .grid-lines {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, var(--vt-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--vt-grid-line) 1px, transparent 1px);
   background-size: 68px 68px;
 }
 
@@ -107,14 +261,14 @@ body {
   mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
-/* Degradê oficial Vecttex: Light Gold -> Vecttex Gold -> Deep Amber */
 .text-gradient {
-  background: linear-gradient(100deg, #ffd166 0%, #ffb000 45%, #ff8a00 100%);
+  background: var(--vt-text-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+/* Ouro chapado de preenchimento — igual nos dois temas (manual, cap. 04) */
 .gold-gradient {
   background: linear-gradient(180deg, #ffd166 0%, #ffb000 45%, #ff8a00 100%);
 }
@@ -127,32 +281,32 @@ body {
 }
 
 .hairline {
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--vt-hairline);
 }
 
 .glass {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+  background: linear-gradient(180deg, var(--vt-glass-from), var(--vt-glass-to));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
 
 .btn-glow {
-  box-shadow: 0 10px 40px -12px rgba(255, 176, 0, 0.7);
+  box-shadow: var(--vt-btn-glow);
 }
 
 .wa-glow {
-  box-shadow: 0 12px 44px -10px rgba(37, 211, 102, 0.6);
+  box-shadow: var(--vt-wa-glow);
 }
 
 .dotted {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-image: radial-gradient(var(--vt-dot) 1px, transparent 1px);
   background-size: 14px 14px;
 }
 
 .stripe-accent {
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(255, 176, 0, 0.22) 0 6px,
+    var(--vt-stripe) 0 6px,
     transparent 6px 12px
   );
 }

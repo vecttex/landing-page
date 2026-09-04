@@ -41,7 +41,7 @@ export function WhatsAppFab() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.94 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-[248px] rounded-2xl border border-line bg-surface/95 p-4 shadow-[0_30px_70px_-25px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+            className="relative w-[248px] rounded-2xl border border-line bg-surface/95 p-4 shadow-[var(--vt-shadow-pop)] backdrop-blur-xl"
           >
             <button
               onClick={() => setOpen(false)}
@@ -55,7 +55,7 @@ export function WhatsAppFab() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-wa opacity-70" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-wa" />
               </span>
-              <span className="font-label text-[9px] uppercase tracking-[0.18em] text-wa">
+              <span className="font-label text-[9px] uppercase tracking-[0.18em] text-wa-text">
                 {t("fab.status")}
               </span>
             </div>
@@ -66,7 +66,7 @@ export function WhatsAppFab() {
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-wa px-3 py-2 text-[12.5px] font-semibold text-[#04240f] transition hover:brightness-110"
+              className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-wa px-3 py-2 text-[12.5px] font-semibold text-on-wa transition hover:brightness-110"
             >
               <WhatsAppGlyph className="h-4 w-4" />
               {t("fab.action")}
@@ -84,7 +84,7 @@ export function WhatsAppFab() {
         animate={visible ? { opacity: 1, scale: 1 } : {}}
         transition={{ type: "spring", stiffness: 260, damping: 18 }}
         onMouseEnter={() => setOpen(true)}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-wa text-[#04240f] wa-glow transition-transform duration-300 hover:scale-105"
+        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-wa text-on-wa wa-glow transition-transform duration-300 hover:scale-105"
       >
         <span className="absolute inset-0 rounded-full bg-wa animate-pulse-ring" />
         <WhatsAppGlyph className="relative h-7 w-7" />

@@ -113,8 +113,8 @@ export default function Servicos() {
             {prepare.map((p, i) => (
               <Reveal key={p.id} delay={(i % 2) * 0.08}>
                 <div className="group h-full rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-line-2">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line-2/60 bg-white/[0.03] transition-colors group-hover:border-accent/50">
-                    <Icon name={PREPARE_ICON[p.id]} className="h-4.5 w-4.5 text-accent-2" strokeWidth={1.7} />
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line-2/60 bg-raise transition-colors group-hover:border-accent/50">
+                    <Icon name={PREPARE_ICON[p.id]} className="h-4.5 w-4.5 text-gold-soft" strokeWidth={1.7} />
                   </span>
                   <h3 className="mt-5 font-display text-[17.5px] font-semibold tracking-[-0.02em]">
                     {p.title}

@@ -14,3 +14,9 @@ export type Localized<T> = T extends string
 
 /** Contrato que todo idioma precisa cumprir. */
 export type Resources = Localized<typeof ptBR>;
+
+export type LooseLists<T> = T extends readonly (infer Item)[]
+  ? LooseLists<Item>[]
+  : T extends object
+    ? { [K in keyof T]: LooseLists<T[K]> }
+    : T;

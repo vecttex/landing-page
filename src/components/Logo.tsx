@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { SITE } from "../config/site";
+import { useTheme } from "../theme/context";
 
 /**
  * Geometria oficial do símbolo Vecttex (Manual de Marca, cap. 03):
@@ -66,6 +67,8 @@ export function Logo({
   wordClass?: string;
   withSlogan?: boolean;
 }) {
+  const { theme } = useTheme();
+
   return (
     <Link to="/" className="group inline-flex flex-col" aria-label={SITE.name}>
       <span className="flex items-center gap-[3px]">
@@ -73,7 +76,7 @@ export function Logo({
           className={`${symbolClass} w-auto transition-transform duration-500 group-hover:-translate-y-[2px]`}
         />
         <img
-          src={SITE.wordmark}
+          src={SITE.wordmark[theme]}
           alt={SITE.name}
           className={`${wordClass} w-auto`}
         />

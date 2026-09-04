@@ -9,7 +9,7 @@ import { WhatsAppGlyph } from "../components/WhatsAppFab";
 import { SITE, waLink } from "../config/site";
 
 const inputCls =
-  "w-full rounded-xl border border-line bg-ink-2/80 px-4 py-3.5 text-[14px] text-fg placeholder:text-muted/60 outline-none transition-all duration-300 focus:border-accent/70 focus:bg-ink-2 focus:ring-2 focus:ring-accent/15";
+  "w-full rounded-xl border border-line bg-ink-2/80 px-4 py-3.5 text-[14px] text-fg placeholder:text-muted/80 outline-none transition-all duration-300 focus:border-accent/70 focus:bg-ink-2 focus:ring-2 focus:ring-accent/15";
 
 const labelCls =
   "mb-2 block font-label text-[9.5px] uppercase tracking-[0.2em] text-muted";
@@ -73,7 +73,7 @@ export default function Contato() {
           {/* form */}
           <Reveal>
             <div className="relative overflow-hidden rounded-[24px] border border-line bg-surface/45 p-7 sm:p-10">
-              <GlowOrb className="-right-32 -top-32" size={380} color="rgba(255,176,0,0.18)" />
+              <GlowOrb className="-right-32 -top-32" size={380} color="var(--vt-orb-soft)" />
               <div className="relative">
                 <Eyebrow>{t("contactPage.form.eyebrow")}</Eyebrow>
                 <h2 className="mt-4 font-display text-[28px] font-semibold tracking-[-0.03em]">
@@ -166,7 +166,7 @@ export default function Contato() {
 
                   <button
                     type="submit"
-                    className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-wa px-6 py-4 text-[14.5px] font-semibold text-[#04240f] wa-glow transition-all duration-300 hover:brightness-110 active:scale-[0.99]"
+                    className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-wa px-6 py-4 text-[14.5px] font-semibold text-on-wa wa-glow transition-all duration-300 hover:brightness-110 active:scale-[0.99]"
                   >
                     <WhatsAppGlyph className="h-5 w-5" />
                     {t("contactPage.form.submit")}
@@ -179,14 +179,14 @@ export default function Contato() {
                       animate={{ opacity: 1, y: 0 }}
                       className="flex items-center gap-2.5 rounded-xl border border-wa/25 bg-wa/10 px-4 py-3.5"
                     >
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-wa" />
-                      <p className="text-[13px] text-wa">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-wa-text" />
+                      <p className="text-[13px] text-wa-text">
                         {t("contactPage.form.sent")}
                       </p>
                     </motion.div>
                   )}
 
-                  <p className="text-center text-[11.5px] leading-relaxed text-muted/70">
+                  <p className="text-center text-[11.5px] leading-relaxed text-muted">
                     {t("contactPage.form.privacy")}
                   </p>
                 </form>
@@ -204,11 +204,11 @@ export default function Contato() {
                 className="group block overflow-hidden rounded-[24px] border border-wa/25 bg-gradient-to-br from-wa/[0.14] to-transparent p-8 transition-all duration-500 hover:-translate-y-1 hover:border-wa/50"
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-wa text-[#04240f]">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-wa text-on-wa">
                     <WhatsAppGlyph className="h-5 w-5" />
                   </span>
                   <div>
-                    <p className="font-label text-[9px] uppercase tracking-[0.2em] text-wa">
+                    <p className="font-label text-[9px] uppercase tracking-[0.2em] text-wa-text">
                       {t("contactPage.channel.eyebrow")}
                     </p>
                     <p className="font-display text-[19px] font-semibold tracking-[-0.02em]">
@@ -219,7 +219,7 @@ export default function Contato() {
                 <p className="mt-5 text-[14px] leading-relaxed text-muted">
                   {t("contactPage.channel.desc")}
                 </p>
-                <p className="mt-5 font-display text-[22px] font-semibold tracking-[-0.02em] text-wa">
+                <p className="mt-5 font-display text-[22px] font-semibold tracking-[-0.02em] text-wa-text">
                   {SITE.whatsappDisplay}
                 </p>
               </a>
@@ -233,8 +233,8 @@ export default function Contato() {
             ].map((c, i) => (
               <Reveal key={c.label} delay={0.14 + i * 0.06}>
                 <div className="flex items-start gap-4 rounded-2xl border border-line bg-surface/40 p-6">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line-2/60 bg-white/[0.03]">
-                    <c.icon className="h-4 w-4 text-accent" strokeWidth={1.7} />
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line-2/60 bg-raise">
+                    <c.icon className="h-4 w-4 text-gold-text" strokeWidth={1.7} />
                   </span>
                   <div>
                     <p className="font-label text-[9px] uppercase tracking-[0.2em] text-muted">

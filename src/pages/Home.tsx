@@ -26,7 +26,7 @@ export default function Home() {
       <section className="relative overflow-hidden px-5 pb-20 pt-[120px] sm:px-8 md:pb-28 md:pt-[150px]">
         <div className="grid-lines absolute inset-0 opacity-70 mask-fade-b" />
         <GlowOrb className="-left-56 -top-40" size={700} />
-        <GlowOrb className="-right-40 top-24" size={560} color="rgba(255,209,102,0.12)" />
+        <GlowOrb className="-right-40 top-24" size={560} color="var(--vt-orb-2)" />
 
         <div className="relative mx-auto grid w-full max-w-[1200px] items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
@@ -36,7 +36,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease }}
             >
               <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 py-1.5 pl-1.5 pr-4 backdrop-blur">
-                <span className="flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 font-label text-[9px] font-semibold uppercase tracking-[0.14em] text-[#111111]">
+                <span className="flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 font-label text-[9px] font-semibold uppercase tracking-[0.14em] text-on-accent">
                   <Star className="h-2.5 w-2.5 fill-current" /> {SITE.name}
                 </span>
                 <span className="text-[12.5px] text-fg/75">{t("home.hero.badge")}</span>
@@ -167,7 +167,7 @@ export default function Home() {
               className="group inline-flex shrink-0 items-center gap-2 text-[13.5px] font-semibold text-fg"
             >
               {t("home.services.link")}
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-2/70 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-[#111111]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-2/70 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent">
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
             </Link>
@@ -192,7 +192,7 @@ export default function Home() {
               className="group inline-flex shrink-0 items-center gap-2 text-[13.5px] font-semibold text-fg"
             >
               {t("home.types.link")}
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-2/70 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-[#111111]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-2/70 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent">
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
             </Link>

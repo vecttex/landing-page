@@ -35,9 +35,9 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-2.5 font-label text-[10.5px] uppercase tracking-[0.24em] text-accent-2 ${className}`}
+      className={`inline-flex items-center gap-2.5 font-label text-[10.5px] uppercase tracking-[0.24em] text-gold-soft ${className}`}
     >
-      <span className="h-px w-6 bg-gradient-to-r from-transparent to-accent" />
+      <span className="h-px w-6 bg-gradient-to-r from-transparent to-gold-text" />
       {children}
     </span>
   );
@@ -113,10 +113,10 @@ const BTN_BASE =
 
 const VARIANTS: Record<string, string> = {
   primary:
-    "bg-accent text-[#111111] btn-glow hover:bg-accent-2 hover:-translate-y-0.5",
+    "bg-accent text-on-accent btn-glow hover:bg-accent-2 hover:-translate-y-0.5",
   ghost:
-    "border border-line-2/70 bg-white/[0.02] text-fg hover:border-accent/60 hover:bg-accent/[0.07] hover:-translate-y-0.5",
-  wa: "bg-wa text-[#04240f] wa-glow hover:brightness-110 hover:-translate-y-0.5",
+    "border border-line-2/70 bg-raise text-fg hover:border-accent/60 hover:bg-accent/[0.07] hover:-translate-y-0.5",
+  wa: "bg-wa text-on-wa wa-glow hover:brightness-110 hover:-translate-y-0.5",
 };
 
 export function Button({
@@ -160,7 +160,7 @@ export function Pill({ children }: { children: ReactNode }) {
 
 export function GlowOrb({
   className = "",
-  color = "rgba(255,176,0,0.30)",
+  color = "var(--vt-orb)",
   size = 620,
 }: {
   className?: string;

@@ -37,6 +37,9 @@ export const esES: Resources = {
     openMenuAria: "Abrir menú",
     closeAria: "Cerrar",
     whatsappAria: "Hablar por WhatsApp",
+    themeSwitchLabel: "Tema claro",
+    switchToLight: "Cambiar al tema claro",
+    switchToDark: "Cambiar al tema oscuro",
     teamPhotoAlt: "El equipo de Vecttex trabajando en un proyecto",
   },
   contact: {

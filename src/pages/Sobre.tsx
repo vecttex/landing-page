@@ -37,13 +37,13 @@ export default function Sobre() {
 
           <Reveal delay={0.12}>
             <div className="relative">
-              <GlowOrb className="-right-20 -top-20" size={420} color="rgba(255,138,0,0.18)" />
+              <GlowOrb className="-right-20 -top-20" size={420} color="var(--vt-orb-ember)" />
               <div className="relative rotate-[1.5deg]">
                 <BrowserMockup url={t("mockups.projectUrl")} />
               </div>
               <div className="relative mt-6 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl border border-line bg-surface/50 p-5">
-                  <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-accent">
+                  <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-gold-text">
                     {t("about.devices.web.label")}
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-snug text-muted">
@@ -51,7 +51,7 @@ export default function Sobre() {
                   </p>
                 </div>
                 <div className="rounded-2xl border border-line bg-surface/50 p-5">
-                  <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-ember">
+                  <p className="font-display text-[26px] font-semibold tracking-[-0.03em] text-ember-text">
                     {t("about.devices.mobile.label")}
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-snug text-muted">
@@ -76,8 +76,8 @@ export default function Sobre() {
           {principles.map((v, i) => (
             <Reveal key={v.id} delay={(i % 4) * 0.08}>
               <div className="group h-full rounded-2xl border border-line bg-surface/45 p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line-2/60 bg-gradient-to-br from-white/[0.07] to-transparent transition-all duration-500 group-hover:border-accent/50 group-hover:from-accent/20">
-                  <Icon name={PRINCIPLE_ICON[v.id]} className="h-5 w-5 text-accent-2" strokeWidth={1.7} />
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line-2/60 bg-gradient-to-br from-raise-2 to-transparent transition-all duration-500 group-hover:border-accent/50 group-hover:from-accent/20">
+                  <Icon name={PRINCIPLE_ICON[v.id]} className="h-5 w-5 text-gold-soft" strokeWidth={1.7} />
                 </span>
                 <h3 className="mt-6 font-display text-[19px] font-semibold tracking-[-0.02em]">
                   {v.title}

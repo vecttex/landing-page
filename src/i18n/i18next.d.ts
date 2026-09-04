@@ -1,4 +1,4 @@
-import type { Resources } from "./types";
+import type { LooseLists, Resources } from "./types";
 
 /**
  * Tipa o `t()` com as chaves reais do conteúdo: `t("home.hero.lead")` tem
@@ -11,7 +11,7 @@ import type { Resources } from "./types";
 declare module "i18next" {
   interface CustomTypeOptions {
     defaultNS: "translation";
-    resources: { translation: Resources };
+    resources: { translation: LooseLists<Resources> };
     returnNull: false;
   }
 }
